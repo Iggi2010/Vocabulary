@@ -1,296 +1,588 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vocab · B2+ → C1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>IELTS 7+ · Speaking & Writing</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg1:#EDE9FF;--bg2:#E7F1FF;--card:#FFFFFF;--ink:#3A3A46;--muted:#9E9EB0;
-    --green:#58CC02;--green-dk:#4CAF00;--blue:#5B9DF9;--blue-dk:#4A86E8;
-    --gold:#FFC800;--gold-dk:#E5A800;--purple:#B98CFF;--purple-dk:#9B6FE8;
-    --pink:#FF9EC4;--line:#ECECF4;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;font-family:"Nunito",sans-serif}
-  html,body{height:100%}
-  body{background:linear-gradient(160deg,var(--bg1),var(--bg2));color:var(--ink);display:flex;flex-direction:column;align-items:center;padding:16px 14px 40px;min-height:100%}
+ :root{--ink:#3A3A46;--muted:#9199AC;--line:#EAEAF2;--card:#fff;
+  --sp:#FF8A4C;--sp-dk:#E86A2C;--sp-l:#FFF0E6;
+  --wr:#4C8DFF;--wr-dk:#2C6BE8;--wr-l:#E9F1FF;
+  --green:#58CC02;--green-dk:#4CAF00;--gold:#FFC800;--gold-dk:#DFA400;
+  --purple:#B98CFF;--purple-dk:#9B6FE8;--c1:#BFD5FF;--c2:#DAC7FF;}
+ *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;font-family:"Nunito",sans-serif}
+ body{background:linear-gradient(160deg,#EDE9FF,#E7F1FF);color:var(--ink);padding:14px 14px 46px;min-height:100vh}
+ .wrap{max-width:460px;margin:0 auto}
+ .top{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+ .logo{font-family:"Baloo 2";font-weight:800;font-size:18px;flex:1}
+ .ib{background:rgba(255,255,255,.9);border:none;width:40px;height:40px;border-radius:50%;font-size:17px;box-shadow:0 3px 0 rgba(0,0,0,.06);cursor:pointer}
+ .ib:active{transform:translateY(2px)}
+ .streak{font-family:"Baloo 2";font-size:13.5px;color:var(--gold-dk);font-weight:800;background:#FFF4D0;padding:7px 12px;border-radius:20px;box-shadow:0 3px 0 #F0DFA0}
+ h2{font-family:"Baloo 2";font-weight:800;font-size:19px;margin-bottom:3px}
+ .sub{font-size:12.5px;color:var(--muted);margin-bottom:14px;line-height:1.45}
+ .screen{display:none}.screen.on{display:block}
 
-  .top{width:100%;max-width:440px;display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:8px}
-  .logo{font-family:"Baloo 2";font-weight:800;font-size:20px;background:linear-gradient(90deg,var(--purple),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;display:flex;align-items:center;gap:6px;flex:1}
-  .icon-btn{background:rgba(255,255,255,.8);border:none;width:42px;height:42px;border-radius:50%;font-size:19px;cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,.06)}
-  .icon-btn:active{transform:translateY(2px)}
-  .streak{font-family:"Baloo 2";font-size:15px;color:var(--gold-dk);font-weight:800;background:#FFF4D0;padding:7px 14px;border-radius:22px;box-shadow:0 3px 0 #F0DFA0}
+ /* home */
+ .big{width:100%;border:none;border-radius:24px;padding:22px 20px;text-align:left;margin-bottom:12px;cursor:pointer;color:#fff;display:block}
+ .big.sp{background:linear-gradient(135deg,#FFA76B,#FF7A3C);box-shadow:0 6px 0 var(--sp-dk)}
+ .big.wr{background:linear-gradient(135deg,#6FA6FF,#3D7BF0);box-shadow:0 6px 0 var(--wr-dk)}
+ .big:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(0,0,0,.2)}
+ .big .t{font-family:"Baloo 2";font-weight:800;font-size:21px}
+ .big .d{font-size:13px;opacity:.95;margin-top:4px;line-height:1.4}
+ .big .m{font-size:11.5px;opacity:.85;margin-top:8px;font-weight:700}
+ .warnbox{background:#FFF8E6;border:2px solid #FFE8A8;border-radius:18px;padding:14px 16px;font-size:13px;line-height:1.5;margin-bottom:14px}
+ .warnbox b{font-family:"Baloo 2"}
+ .tool{width:100%;background:#fff;border:2px solid var(--line);border-radius:18px;padding:15px 16px;text-align:left;margin-bottom:10px;cursor:pointer;box-shadow:0 4px 0 var(--line);font-size:14.5px;font-weight:700}
+ .tool:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
+ .tool span{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-top:3px}
 
-  .modes{display:flex;gap:5px;width:100%;max-width:440px;margin-bottom:14px;background:rgba(255,255,255,.6);padding:5px;border-radius:18px}
-  .mode-btn{flex:1;font-family:"Baloo 2";font-size:12.5px;font-weight:800;padding:11px 3px;border-radius:13px;border:none;background:transparent;color:var(--muted);cursor:pointer;transition:.18s}
-  .mode-btn.active{color:#fff}
-  body[data-mode="words"] .mode-btn.active{background:linear-gradient(135deg,#7DA9FF,#B98CFF)}
-  body[data-mode="phrasal"] .mode-btn.active{background:linear-gradient(135deg,#C98CFF,#FF9EC4)}
-  body[data-mode="idioms"] .mode-btn.active{background:linear-gradient(135deg,#FF9EB5,#FFC58C)}
-  body[data-mode="talk"] .mode-btn.active{background:linear-gradient(135deg,#5ED9B0,#5B9DF9)}
+ /* topics */
+ .back-btn{background:none;border:none;font-family:"Baloo 2";font-weight:800;font-size:14px;color:var(--muted);padding:6px 0;margin-bottom:8px;cursor:pointer}
+ .topic{width:100%;background:#fff;border:2px solid var(--line);border-radius:18px;padding:15px 16px;text-align:left;margin-bottom:10px;cursor:pointer;box-shadow:0 4px 0 var(--line);position:relative}
+ .topic:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
+ .topic .tt{font-family:"Baloo 2";font-weight:800;font-size:15.5px}
+ .topic .ts{font-size:12px;color:var(--muted);margin-top:3px;font-weight:600}
+ .topic.locked{opacity:.62;background:#F7F7FB}
+ .topic .lk{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:17px}
+ .bar{height:7px;background:var(--line);border-radius:8px;margin-top:9px;overflow:hidden}
+ .bar i{display:block;height:100%;background:var(--green);border-radius:8px}
 
-  .chips{display:none;flex-wrap:wrap;gap:7px;width:100%;max-width:440px;margin-bottom:14px;justify-content:center}
-  .chip{font-family:"Baloo 2";font-size:13px;font-weight:700;padding:8px 15px;border-radius:20px;border:2px solid #EAD9FF;background:rgba(255,255,255,.7);color:var(--purple-dk);cursor:pointer;transition:.12s}
-  .chip.active{background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;border-color:transparent;box-shadow:0 3px 0 var(--purple-dk)}
+ /* card */
+ .goal{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+ .gt{flex:1;height:15px;background:rgba(255,255,255,.7);border-radius:20px;padding:3px}
+ .gf{height:100%;width:0;background:linear-gradient(90deg,#7ED957,var(--green));border-radius:20px;transition:width .5s}
+ .gf.done{background:linear-gradient(90deg,var(--gold),#FF9E3D)}
+ .gl{font-family:"Baloo 2";font-size:12px;color:var(--muted);font-weight:800}
+ .card{position:relative;min-height:340px;margin-bottom:16px;cursor:pointer}
+ .face{position:absolute;inset:0;border-radius:26px;padding:24px 22px;display:flex;flex-direction:column;overflow:hidden;opacity:0;visibility:hidden;transform:scale(.97);transition:opacity .24s,transform .24s,visibility .24s}
+ .face.on{opacity:1;visibility:visible;transform:scale(1)}
+ .front{background:linear-gradient(150deg,var(--c1),var(--c2));box-shadow:0 12px 26px -12px rgba(120,120,200,.5)}
+ body[data-side="speaking"] .front{background:linear-gradient(150deg,#FFD3B8,#FFC0A0)}
+ body[data-side="writing"] .front{background:linear-gradient(150deg,#BFD5FF,#C9DBFF)}
+ .back{background:#fff;border:3px solid #E3F3D4;box-shadow:0 12px 26px -12px rgba(88,204,2,.35)}
+ .pill{align-self:flex-start;font-family:"Baloo 2";font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:12px;position:relative;z-index:1}
+ .pill.sp{background:var(--sp-l);color:var(--sp-dk)}
+ .pill.wr{background:var(--wr-l);color:var(--wr-dk)}
+ .wrow{display:flex;align-items:center;gap:10px;margin:auto 0 6px;flex-wrap:wrap;position:relative;z-index:1}
+ .term{font-family:"Baloo 2";font-weight:800;font-size:clamp(23px,6.4vw,34px);line-height:1.12}
+ .sb{background:rgba(255,255,255,.75);border:none;width:42px;height:42px;border-radius:50%;font-size:18px;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.12);flex-shrink:0;padding:0}
+ .sb:active{transform:scale(.9)}
+ .hint{margin-top:auto;font-family:"Baloo 2";font-size:12px;color:rgba(80,80,105,.72);font-weight:700;padding-top:12px;position:relative;z-index:1}
+ .back .hint{color:var(--muted)}
+ .lab{font-family:"Baloo 2";font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+ .def{font-size:17.5px;line-height:1.48;margin-top:9px}
+ .def .w{cursor:pointer;border-bottom:2px dotted #D6D6E4;border-radius:4px;padding:1px 2px}
+ .def .w.lit{background:#FFEFAE;border-bottom-color:var(--gold)}
+ .ex{font-style:italic;color:var(--muted);font-size:13.5px;line-height:1.5;margin-top:10px}
+ .note{margin-top:12px;border-radius:14px;padding:11px 13px;font-size:12.5px;line-height:1.5}
+ .note.sp{background:var(--sp-l);border-left:4px solid var(--sp)}
+ .note.wr{background:var(--wr-l);border-left:4px solid var(--wr)}
+ .note b{font-family:"Baloo 2"}
+ .tr{max-height:0;opacity:0;overflow:hidden;transition:max-height .4s,opacity .3s,margin .3s}
+ .tr.show{max-height:220px;opacity:1;margin-top:14px}
+ .rt{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+ .rt span{background:linear-gradient(135deg,#F4E8FF,#FFE8F4);color:var(--purple-dk);font-family:"Baloo 2";font-weight:700;font-size:14.5px;padding:6px 12px;border-radius:13px}
+ .row{display:flex;gap:8px;align-items:center;justify-content:center;margin-bottom:10px}
+ button.b{font-family:"Baloo 2";font-size:14px;font-weight:800;background:#fff;color:var(--ink);padding:13px 15px;border-radius:16px;cursor:pointer;border:2px solid var(--line);box-shadow:0 4px 0 var(--line)}
+ button.b:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
+ .cnt{font-family:"Baloo 2";font-size:14px;color:var(--muted);font-weight:800;min-width:52px;text-align:center}
+ .nav{flex:1;max-width:132px}
+ .kn{border-color:#C7EFA6;color:var(--green-dk);box-shadow:0 4px 0 #C7EFA6}
+ .kn.on{background:var(--green);color:#fff;border-color:var(--green);box-shadow:0 4px 0 var(--green-dk)}
+ .gh{background:rgba(255,255,255,.9);color:var(--muted)}
 
-  .goal{width:100%;max-width:440px;margin-bottom:18px;display:flex;align-items:center;gap:11px}
-  .goal-track{flex:1;height:16px;background:rgba(255,255,255,.6);border-radius:20px;overflow:hidden;padding:3px}
-  .goal-fill{height:100%;width:0;background:linear-gradient(90deg,#7ED957,var(--green));transition:width .5s cubic-bezier(.3,1.4,.5,1);border-radius:20px}
-  .goal-fill.done{background:linear-gradient(90deg,var(--gold),#FF9E3D)}
-  .goal-label{font-family:"Baloo 2";font-size:12px;color:var(--muted);font-weight:800;white-space:nowrap}
+ /* quiz */
+ .qbox{background:#fff;border-radius:22px;padding:20px;margin-bottom:12px;box-shadow:0 6px 20px -12px rgba(0,0,0,.25)}
+ .qmeta{font-family:"Baloo 2";font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+ .qtext{font-size:17px;line-height:1.45;font-weight:700;margin-bottom:14px}
+ .qtext em{color:var(--purple-dk);font-style:normal}
+ .opt{width:100%;text-align:left;background:#fff;border:2px solid #E4EAF6;box-shadow:0 3px 0 #E4EAF6;border-radius:15px;padding:13px 15px;margin-bottom:9px;font-size:15px;font-weight:700;cursor:pointer}
+ .opt:active{transform:translateY(2px);box-shadow:0 1px 0 #E4EAF6}
+ .opt.right{background:#E9F9DC;border-color:var(--green);box-shadow:0 3px 0 var(--green)}
+ .opt.wrong{background:#FFE9E9;border-color:#FF8A8A;box-shadow:0 3px 0 #FF8A8A}
+ .expl{font-size:13px;line-height:1.5;color:#5A5A70;background:#F7F8FC;border-radius:13px;padding:11px 13px;margin-top:4px}
+ .band{text-align:center;padding:8px 0 4px}
+ .band .num{font-family:"Baloo 2";font-weight:800;font-size:52px;line-height:1;background:linear-gradient(135deg,var(--purple),var(--sp));-webkit-background-clip:text;background-clip:text;color:transparent}
+ .band .cap{font-family:"Baloo 2";font-weight:800;font-size:14px;color:var(--muted);margin-top:4px}
 
-  .scene{width:100%;max-width:440px;perspective:1600px;margin-bottom:22px}
-  .card{position:relative;width:100%;aspect-ratio:7/9;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.3,1.1,.4,1);cursor:pointer}
-  .card.flipped{transform:rotateY(180deg)}
-  .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:30px;padding:30px 26px;display:flex;flex-direction:column;overflow:hidden}
-  .front{color:var(--ink)}
-  body[data-mode="words"] .front{background:linear-gradient(150deg,#BFD5FF,#DAC7FF);box-shadow:0 14px 30px -12px rgba(123,140,255,.55)}
-  body[data-mode="phrasal"] .front{background:linear-gradient(150deg,#E4C7FF,#FFCDE4);box-shadow:0 14px 30px -12px rgba(201,140,255,.55)}
-  body[data-mode="idioms"] .front{background:linear-gradient(150deg,#FFCEDA,#FFE4C2);box-shadow:0 14px 30px -12px rgba(255,158,181,.55)}
-  .front::after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.25);top:-60px;right:-50px}
-  .front::before{content:"";position:absolute;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.18);bottom:-40px;left:-30px}
-  .back{transform:rotateY(180deg);background:var(--card);border:3px solid #E3F3D4;box-shadow:0 14px 30px -12px rgba(88,204,2,.35)}
-  .tag{font-family:"Baloo 2";font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-  .badge{align-self:flex-start;background:rgba(255,255,255,.55);color:#5A5A70;font-family:"Baloo 2";font-size:11px;font-weight:800;padding:5px 13px;border-radius:14px;position:relative;z-index:1}
-  .word-row{display:flex;align-items:center;gap:10px;margin:auto 0 8px;flex-wrap:wrap;position:relative;z-index:1}
-  .word{font-family:"Baloo 2";font-weight:800;font-size:clamp(28px,8vw,44px);line-height:1.08}
-  .sound-btn{background:rgba(255,255,255,.65);border:none;width:44px;height:44px;border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 8px rgba(0,0,0,.12);transition:.1s;flex-shrink:0}
-  .sound-btn:active{transform:scale(.9)}
-  .pos{font-style:italic;color:#5A5A70;font-size:17px;font-weight:700;position:relative;z-index:1}
-  .hint{margin-top:auto;font-family:"Baloo 2";font-size:12.5px;color:rgba(90,90,112,.7);font-weight:700;position:relative;z-index:1}
-  .back .hint{color:var(--muted)}
-  .back .def{font-size:19px;line-height:1.5;margin-top:14px}
-  .back .def .w{cursor:pointer;border-radius:5px;padding:0 2px;transition:.1s}
-  .back .def .w:active{background:#EAFBD8}
-  .back .def .w.lit{background:#FFEFAE;box-shadow:inset 0 -3px 0 var(--gold)}
-  .back .example{font-style:italic;color:var(--muted);font-size:14px;line-height:1.5;margin-top:14px}
-  .translation{max-height:0;opacity:0;overflow:hidden;transition:max-height .45s ease,opacity .3s ease,margin .3s ease}
-  .translation.show{max-height:240px;opacity:1;margin-top:18px}
-  .translation .tag{color:var(--purple-dk)}
-  .ru-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
-  .ru-tag{background:linear-gradient(135deg,#F4E8FF,#FFE8F4);color:var(--purple-dk);font-family:"Baloo 2";font-weight:700;font-size:15px;padding:6px 14px;border-radius:14px}
-  .footer{margin-top:auto}
-  .footer .tag{color:var(--green-dk)}
+ /* upgrade */
+ .search{display:flex;gap:8px;margin-bottom:14px}
+ .search input{flex:1;font-size:16px;border:2px solid var(--line);border-radius:16px;padding:13px 15px;background:#fff}
+ .search input:focus{outline:none;border-color:var(--purple)}
+ .search button{background:linear-gradient(135deg,var(--purple),#FF9EC4);color:#fff;border:none;border-radius:16px;padding:0 18px;font-family:"Baloo 2";font-weight:800;font-size:15px;box-shadow:0 4px 0 var(--purple-dk);cursor:pointer}
+ .up{background:#fff;border-radius:18px;padding:14px 16px;margin-bottom:10px;box-shadow:0 4px 0 var(--line);border:2px solid var(--line)}
+ .up .h{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+ .up .wd{font-family:"Baloo 2";font-weight:800;font-size:18px}
+ .tagm{font-family:"Baloo 2";font-size:10px;font-weight:800;padding:4px 9px;border-radius:10px;letter-spacing:.05em}
+ .tagm.S{background:var(--sp-l);color:var(--sp-dk)}
+ .tagm.W{background:var(--wr-l);color:var(--wr-dk)}
+ .tagm.B{background:#E9F9DC;color:var(--green-dk)}
+ .up .ct{font-size:13px;color:#63637A;margin-top:6px;line-height:1.45}
+ .up .sbtn{background:none;border:none;font-size:16px;padding:2px 4px;cursor:pointer;box-shadow:none}
+ .empty{text-align:center;color:var(--muted);font-size:13.5px;line-height:1.6;padding:22px 10px}
 
-  .row{display:flex;align-items:center;gap:9px;width:100%;max-width:440px;justify-content:center;margin-bottom:11px}
-  button{font-family:"Baloo 2";font-size:14px;font-weight:800;background:var(--card);color:var(--ink);padding:13px 16px;border-radius:16px;cursor:pointer;transition:.1s;border:2px solid var(--line);box-shadow:0 4px 0 var(--line)}
-  button:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
-  .counter{font-family:"Baloo 2";font-size:15px;color:var(--muted);font-weight:800;min-width:56px;text-align:center}
-  .nav{flex:1;max-width:130px}
-  .known-btn{border-color:#C7EFA6;color:var(--green-dk);box-shadow:0 4px 0 #C7EFA6}
-  .known-btn.on{background:var(--green);color:#fff;border-color:var(--green);box-shadow:0 4px 0 var(--green-dk)}
-  .known-btn.on:active{box-shadow:0 1px 0 var(--green-dk)}
-  .ghost{background:rgba(255,255,255,.8);border-color:var(--line);color:var(--muted)}
+ /* lock / invite */
+ .ov{position:fixed;inset:0;background:rgba(50,50,66,.58);display:none;align-items:center;justify-content:center;padding:18px;z-index:40;overflow-y:auto}
+ .ov.on{display:flex}
+ .box{background:#fff;border-radius:24px;padding:24px;width:100%;max-width:400px;max-height:88vh;overflow-y:auto}
+ .box h3{font-family:"Baloo 2";font-weight:800;font-size:20px;margin-bottom:6px}
+ .inv{background:#F4F5FA;border-radius:14px;padding:12px;font-size:12px;word-break:break-all;margin:12px 0;font-weight:700;color:#5A5A70}
+ .prog{display:flex;gap:7px;margin:12px 0}
+ .dot{flex:1;height:9px;border-radius:8px;background:var(--line)}
+ .dot.on{background:var(--green)}
+ .skins{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+ .sk{border-radius:16px;padding:14px 8px;text-align:center;cursor:pointer;border:3px solid transparent;position:relative}
+ .sk .e{font-size:26px}.sk .n{font-family:"Baloo 2";font-weight:800;font-size:13px;margin-top:2px}
+ .sk .c{font-size:10.5px;font-weight:700;color:#7A7A8C;margin-top:2px}
+ .sk.lk{filter:grayscale(.75);opacity:.6}
+ .sk.act{border-color:var(--purple-dk);box-shadow:0 4px 0 var(--purple-dk)}
+ .xpb{height:11px;background:#EFEFF6;border-radius:10px;padding:2px;margin:6px 0}
+ .xpb i{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,var(--purple),#FF9EC4)}
 
-  /* talk mode */
-  #talk{width:100%;max-width:440px;display:none;flex-direction:column}
-  .dialogue{display:flex;flex-direction:column;gap:12px;margin-bottom:16px;min-height:200px}
-  .bubble{max-width:88%;padding:12px 15px;border-radius:20px;font-size:16px;line-height:1.4;position:relative;animation:pop .3s ease}
-  @keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-  .bubble.them{align-self:flex-start;background:#fff;border-bottom-left-radius:6px;box-shadow:0 3px 10px -4px rgba(0,0,0,.15)}
-  .bubble.you{align-self:flex-end;background:linear-gradient(135deg,#DFF7D6,#CFF0C2);border-bottom-right-radius:6px}
-  .bubble .who{font-family:"Baloo 2";font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
-  .bubble .en-row{display:flex;align-items:flex-start;gap:8px}
-  .bubble .mini-sound{background:rgba(255,255,255,.7);border:none;width:30px;height:30px;min-width:30px;border-radius:50%;font-size:14px;cursor:pointer;box-shadow:none;padding:0}
-  .bubble .ru{font-size:13px;color:var(--muted);margin-top:5px;font-style:italic}
-
-  .panel{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:4px solid var(--purple);border-radius:26px 26px 0 0;box-shadow:0 -12px 40px -20px rgba(0,0,0,.4);padding:24px 22px 30px;transform:translateY(110%);transition:transform .32s cubic-bezier(.3,1,.4,1);z-index:20;max-width:480px;margin:0 auto}
-  .panel.show{transform:translateY(0)}
-  .pword-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-  .pword{font-family:"Baloo 2";font-size:25px;font-weight:800}
-  .pdef{font-size:16px;line-height:1.45;color:var(--ink);min-height:40px}
-  .pru{display:none;font-size:17px;line-height:1.4;color:var(--purple-dk);font-weight:700;margin-top:12px;background:linear-gradient(135deg,#F4E8FF,#FFE8F4);padding:10px 14px;border-radius:14px}
-  .phint{font-family:"Baloo 2";font-size:12px;color:var(--muted);font-weight:700;margin-top:12px}
-  .pactions{display:flex;gap:10px;margin-top:16px}
-  #p-ru-btn{background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;border-color:transparent;box-shadow:0 4px 0 var(--purple-dk)}
-  .panel .x{position:absolute;top:16px;right:18px;font-size:22px;color:var(--muted);background:none;border:none;box-shadow:none;padding:4px}
-
-  .overlay{position:fixed;inset:0;background:rgba(58,58,70,.5);display:none;align-items:center;justify-content:center;padding:20px;z-index:30;overflow-y:auto}
-  .overlay.show{display:flex}
-  .box{background:var(--card);border-radius:24px;padding:26px;width:100%;max-width:400px}
-  .box h3{font-family:"Baloo 2";font-weight:800;font-size:22px;margin-bottom:6px}
-  .box .sub{font-size:12.5px;color:var(--muted);margin-bottom:16px}
-  .box input,.box textarea{width:100%;font-size:16px;border:2px solid var(--line);border-radius:14px;padding:12px;margin-bottom:12px;background:#F9FAFC}
-  .box input:focus,.box textarea:focus{outline:none;border-color:var(--purple)}
-  .box textarea{min-height:64px;resize:vertical}
-  .note{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.5}
-  #f-save{background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;border-color:transparent;box-shadow:0 4px 0 var(--purple-dk);flex:1}
-
-  .skins-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px}
-  .skin{border-radius:18px;padding:16px 12px;text-align:center;cursor:pointer;border:3px solid transparent;position:relative;transition:.12s}
-  .skin .emoji{font-size:30px}
-  .skin .nm{font-family:"Baloo 2";font-weight:800;font-size:14px;margin-top:4px}
-  .skin .cost{font-family:"Baloo 2";font-size:11px;font-weight:700;color:var(--muted);margin-top:2px}
-  .skin.locked{filter:grayscale(.7);opacity:.7}
-  .skin.locked::after{content:"🔒";position:absolute;top:8px;right:10px;font-size:15px}
-  .skin.active-skin{border-color:var(--purple);box-shadow:0 4px 0 var(--purple-dk)}
-
-  .toast{position:fixed;left:50%;bottom:34px;transform:translate(-50%,140%);background:linear-gradient(135deg,#FFB020,#FF7A45);color:#fff;font-family:"Baloo 2";font-weight:800;font-size:15px;padding:14px 22px;border-radius:18px;box-shadow:0 10px 30px -8px rgba(255,120,50,.7);z-index:40;transition:transform .4s cubic-bezier(.3,1.3,.4,1);text-align:center;max-width:90%}
-  .toast.show{transform:translate(-50%,0)}
+ .panel{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:4px solid var(--purple);border-radius:24px 24px 0 0;padding:20px;transform:translateY(115%);transition:transform .3s;z-index:30;max-width:480px;margin:0 auto}
+ .panel.on{transform:translateY(0)}
+ .panel .x{position:absolute;top:12px;right:14px;font-size:20px;color:var(--muted);background:none;border:none;box-shadow:none;cursor:pointer}
+ .pw{font-family:"Baloo 2";font-size:22px;font-weight:800}
+ .pd{font-size:15px;line-height:1.45;margin-top:6px;min-height:34px}
+ .pr{display:none;font-size:16px;color:var(--purple-dk);font-weight:700;margin-top:10px;background:linear-gradient(135deg,#F4E8FF,#FFE8F4);padding:9px 13px;border-radius:13px}
+ .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,150%);background:linear-gradient(135deg,#FFB020,#FF7A45);color:#fff;font-family:"Baloo 2";font-weight:800;font-size:14.5px;padding:13px 19px;border-radius:17px;z-index:50;transition:transform .4s cubic-bezier(.3,1.3,.4,1);text-align:center;max-width:90%}
+ .toast.on{transform:translate(-50%,0)}
 </style>
 </head>
-<body data-mode="words">
-<div class="top"><span class="logo">🦉 Vocab</span><button class="icon-btn" id="skins-open">🎨</button><span class="streak" id="streak"></span></div>
-<div class="modes"><button class="mode-btn active" data-mode="words">Words</button><button class="mode-btn" data-mode="phrasal">Phrasal</button><button class="mode-btn" data-mode="idioms">Idioms</button><button class="mode-btn" data-mode="talk">Talk 💬</button></div>
-<div class="chips" id="chips"></div>
-<div class="goal"><div class="goal-track"><div class="goal-fill" id="goal-fill"></div></div><span class="goal-label" id="goal-label"></span></div>
+<body>
+<div class="wrap">
+ <div class="top"><span class="logo">🦉 IELTS 7+</span><button class="ib" id="skin-open">🎨</button><span class="streak" id="streak"></span></div>
 
-<div class="scene" id="scene"><div class="card" id="card">
-  <div class="face front"><span class="badge" id="idx-tag"></span><div class="word-row"><span class="word" id="word"></span><button class="sound-btn" id="sound-btn">🔊</button></div><div class="pos" id="pos"></div><div class="hint">👆 tap card to reveal</div></div>
-  <div class="face back"><span class="tag">Meaning</span><div class="def" id="def"></div><div class="example" id="example"></div><div class="translation" id="translation"><span class="tag">🇷🇺 Перевод · все варианты</span><div class="ru-tags" id="ru-tags"></div></div><div class="footer"><span class="hint" id="hint-back">👆 tap again for translation</span></div></div>
-</div></div>
-<div class="row" id="row1"><button class="nav" id="prev">‹ Prev</button><span class="counter" id="counter"></span><button class="nav" id="next">Next ›</button></div>
-<div class="row" id="row2"><button id="shuffle" class="ghost">↻</button><button id="known" class="known-btn">Known</button><button id="add" class="ghost">＋ Add</button></div>
+ <!-- HOME -->
+ <div class="screen on" id="s-home">
+  <div class="warnbox"><b>⚠️ Главное правило</b><br>Лексика Speaking и Writing — это два разных набора. <i>«A piece of cake»</i> в эссе снизит балл за регистр, а <i>«notwithstanding»</i> в устной речи прозвучит как зачитанная шпаргалка. Каждая карточка помечена, где её можно использовать.</div>
+  <button class="big sp" data-side="speaking"><div class="t">🗣️ Лексика для Speaking</div><div class="d">Идиомы, живые фразовые глаголы, филлеры и связки речи</div><div class="m" id="m-sp"></div></button>
+  <button class="big wr" data-side="writing"><div class="t">✍️ Лексика для Writing</div><div class="d">Академические C1-слова, вводные конструкции, официальные глаголы</div><div class="m" id="m-wr"></div></button>
+  <button class="tool" id="go-quiz">🧠 Проверить себя<span>Квиз на 8 вопросов + примерный балл IELTS</span></button>
+  <button class="tool" id="go-up">🔎 Апгрейд слова<span>Введи good, bad, important — получи C1-замены с пометкой S/W</span></button>
+  <button class="tool" id="go-inv">🔑 Открыть закрытые темы<span>Пригласи друзей по личной ссылке</span></button>
+ </div>
 
-<div id="talk">
-  <div class="chips" id="talk-chips" style="display:flex"></div>
-  <div class="dialogue" id="dialogue"></div>
-  <div class="row"><button id="talk-next" class="nav" style="max-width:none;flex:2">Next line ▸</button><button id="talk-restart" class="ghost">↻</button></div>
+ <!-- TOPICS -->
+ <div class="screen" id="s-topics">
+  <button class="back-btn" data-back="s-home">‹ Назад</button>
+  <h2 id="tp-title"></h2><div class="sub" id="tp-sub"></div>
+  <div id="tp-list"></div>
+ </div>
+
+ <!-- DECK -->
+ <div class="screen" id="s-deck">
+  <button class="back-btn" data-back="s-topics">‹ К темам</button>
+  <div class="goal"><div class="gt"><div class="gf" id="gf"></div></div><span class="gl" id="gl"></span></div>
+  <div class="card" id="card">
+   <div class="face front on" id="f-front"><span class="pill" id="p-front"></span><div class="wrow"><span class="term" id="term"></span><button class="sb" id="sb">🔊</button></div><div class="hint">👆 нажми, чтобы открыть значение</div></div>
+   <div class="face back" id="f-back"><span class="lab">Meaning</span><div class="def" id="def"></div><div class="ex" id="ex"></div><div class="note" id="nt"></div><div class="tr" id="tr"><span class="lab" style="color:var(--purple-dk)">🇷🇺 Перевод</span><div class="rt" id="rt"></div></div><div class="hint" id="hb">👆 нажми ещё раз — перевод</div></div>
+  </div>
+  <div class="row"><button class="b nav" id="prev">‹ Назад</button><span class="cnt" id="cnt"></span><button class="b nav" id="next">Вперёд ›</button></div>
+  <div class="row"><button class="b gh" id="shuf">↻</button><button class="b kn" id="known">Знаю</button></div>
+ </div>
+
+ <!-- QUIZ -->
+ <div class="screen" id="s-quiz">
+  <button class="back-btn" data-back="s-home">‹ Назад</button>
+  <div id="q-body"></div>
+ </div>
+
+ <!-- UPGRADE -->
+ <div class="screen" id="s-up">
+  <button class="back-btn" data-back="s-home">‹ Назад</button>
+  <h2>🔎 Апгрейд слова</h2><div class="sub">Введи простое слово — получишь C1-замены. <b style="color:var(--sp-dk)">S</b> = только речь, <b style="color:var(--wr-dk)">W</b> = только письмо, <b style="color:var(--green-dk)">B</b> = можно везде.</div>
+  <div class="search"><input id="up-in" placeholder="good, bad, important…" autocomplete="off" autocapitalize="off"><button id="up-go">→</button></div>
+  <div id="up-out"></div>
+ </div>
 </div>
 
-<div class="panel" id="panel"><button class="x" id="panel-x">×</button><div class="pword-row"><span class="pword" id="pword"></span><button class="sound-btn" id="psound">🔊</button></div><div class="pdef" id="pdef"></div><div class="pru" id="pru"></div><div class="phint" id="phint"></div><div class="pactions"><button id="p-ru-btn">🇷🇺 Перевод</button><button id="add-from-lookup" class="ghost">＋ Add</button></div></div>
+<div class="panel" id="panel"><button class="x" id="p-x">×</button><div style="display:flex;align-items:center;gap:9px"><span class="pw" id="pw"></span><button class="sb" id="p-sb" style="width:36px;height:36px;font-size:15px">🔊</button></div><div class="pd" id="pd"></div><div class="pr" id="pr"></div></div>
 
-<div class="overlay" id="form"><div class="box"><h3>New word ✏️</h3><input id="f-word" placeholder="word" autocomplete="off"><input id="f-pos" placeholder="part of speech (optional)" autocomplete="off"><textarea id="f-def" placeholder="definition (leave empty to auto-fetch)"></textarea><input id="f-ru" placeholder="перевод: вариант1, вариант2, ..." autocomplete="off"><div class="row" style="margin:0;max-width:100%"><button id="f-cancel" class="ghost">Cancel</button><button id="f-save">Save</button></div><div class="note">Определение можно оставить пусто — подтянется само (нужен интернет).</div></div></div>
+<div class="ov" id="ov-inv"><div class="box"><h3>🔑 Открыть темы</h3><div class="sub" id="inv-sub"></div><div class="prog" id="inv-prog"></div><div class="inv" id="inv-link"></div><div class="row" style="margin:0"><button class="b gh" id="inv-close" style="flex:1">Закрыть</button><button class="b" id="inv-copy" style="flex:2;background:linear-gradient(135deg,var(--purple),#FF9EC4);color:#fff;border-color:transparent;box-shadow:0 4px 0 var(--purple-dk)">Скопировать</button></div><div class="sub" style="margin-top:12px;margin-bottom:0">Друг должен открыть бота по твоей ссылке и пройти хотя бы одну карточку.</div></div></div>
 
-<div class="overlay" id="skins"><div class="box"><h3>🎨 Скины</h3><div class="sub" id="skins-sub"></div><div class="skins-grid" id="skins-grid"></div><div class="row" style="margin:6px 0 0;max-width:100%"><button id="skins-close" class="ghost" style="flex:1">Close</button></div><div class="note">Проходи слова, копи ✨XP и открывай новые темы оформления.</div></div></div>
+<div class="ov" id="ov-skin"><div class="box"><h3>🎨 Скины</h3><div class="sub" id="sk-sub"></div><div class="xpb"><i id="xp-fill"></i></div><div class="sub" id="sk-next"></div><div class="skins" id="sk-grid"></div><div class="row" style="margin:14px 0 0"><button class="b gh" id="sk-close" style="flex:1">Закрыть</button></div></div></div>
 
 <div class="toast" id="toast"></div>
-
 <script>
-const WORDS=[["ubiquitous","adjective","Seeming to be present everywhere at the same time.","вездесущий, повсеместный"],["meticulous","adjective","Showing great attention to detail; very careful and precise.","дотошный, скрупулёзный, тщательный"],["ephemeral","adjective","Lasting for a very short time.","эфемерный, мимолётный, недолговечный"],["ambivalent","adjective","Having mixed or contradictory feelings about something.","противоречивый, двойственный, амбивалентный"],["tenacious","adjective","Holding firmly to a purpose; persistent and not easily discouraged.","упорный, цепкий, настойчивый"],["scrupulous","adjective","Diligent and thorough, with careful attention to what is right.","щепетильный, добросовестный"],["innocuous","adjective","Not harmful or offensive.","безобидный, безвредный"],["ostensible","adjective","Stated or appearing to be true, but not necessarily so.","мнимый, показной, формальный"],["cumbersome","adjective","Large or heavy and therefore difficult to use or manage.","громоздкий, неудобный, обременительный"],["superfluous","adjective","More than is needed or wanted; unnecessary.","излишний, лишний, ненужный"],["eloquent","adjective","Fluent and persuasive in speaking or writing.","красноречивый"],["austere","adjective","Severe or strict in manner; plain and without comfort or luxury.","строгий, аскетичный, суровый"],["lucid","adjective","Expressed clearly and easy to understand.","ясный, вразумительный, чёткий"],["nuanced","adjective","Marked by subtle distinctions or shades of meaning.","тонкий, нюансированный, детализированный"],["obsolete","adjective","No longer in use or out of date.","устаревший, вышедший из употребления"],["candid","adjective","Truthful and straightforward; frank.","откровенный, прямой, искренний"],["resilient","adjective","Able to recover quickly from difficulties.","устойчивый, жизнестойкий, стойкий"],["arbitrary","adjective","Based on random choice or personal whim rather than reason.","произвольный, самовольный"],["precarious","adjective","Not securely held; dangerously uncertain or unstable.","шаткий, ненадёжный, рискованный"],["pervasive","adjective","Spreading widely throughout an area or a group.","всепроникающий, распространённый"],["inherent","adjective","Existing as a natural or permanent part of something.","присущий, неотъемлемый, врождённый"],["succinct","adjective","Expressed clearly and in few words; concise.","лаконичный, сжатый, краткий"],["ambiguous","adjective","Open to more than one interpretation; unclear.","двусмысленный, неоднозначный"],["inadvertent","adjective","Not resulting from deliberate intent; unintentional.","непреднамеренный, нечаянный, случайный"],["conducive","adjective","Making a particular outcome likely or possible.","способствующий, благоприятствующий"],["mundane","adjective","Lacking interest or excitement; dull and ordinary.","обыденный, приземлённый, будничный"],["astute","adjective","Having sharp judgment; shrewd.","проницательный, хитроумный"],["benevolent","adjective","Kind, well-meaning and charitable.","доброжелательный, благосклонный"],["diligent","adjective","Showing steady, careful effort.","прилежный, усердный"],["frugal","adjective","Careful and economical with money or resources.","бережливый, экономный"],["gregarious","adjective","Fond of company; sociable.","общительный, компанейский"],["impartial","adjective","Treating all sides fairly; unbiased.","беспристрастный, непредвзятый"]];
-const PHRASAL={be:[["be about to","on the point of doing something very soon","I think it's about to rain.","собираться (вот-вот сделать)"],["be after","trying to find or catch someone/something","The police are after him.","гнаться за, преследовать"],["be along","to arrive somewhere soon","The bus will be along soon.","скоро прибыть"],["be away","absent, not at home or work","She's away on business.","отсутствовать, быть в отъезде"],["be back","to return to a place","I'll be back by six.","вернуться"],["be behind","to cause or support something","We're right behind you.","стоять за; поддерживать"],["be down with","affected by an illness (informal)","He's down with the flu.","слечь с (болезнью)"],["be fed up with","annoyed or bored with something","I'm fed up with the rain.","быть сытым по горло"],["be in for","about to experience something unpleasant","We're in for a rough winter.","ожидать (неприятное)"],["be into","very interested in something","She's really into photography.","увлекаться, быть без ума от"],["be off","to leave; of food, to have spoiled","I'm off to the gym.","уходить; испортиться"],["be onto","to have discovered something","The reporters are onto it.","напасть на след"],["be out for","determined to get something","He's out for revenge.","стремиться к, охотиться за"],["be over","to have ended","The meeting is over.","закончиться"],["be up against","facing a difficult problem","We're up against a deadline.","столкнуться с (трудностью)"],["be up to","doing something secretly; capable of","What are you up to?","замышлять; быть способным на"]],get:[["get away","to escape or leave for a holiday","We're getting away this weekend.","сбежать; уехать в отпуск"],["get away with","to avoid punishment for wrongdoing","He got away with it.","выйти сухим из воды"],["get back","to return","What time will you get back?","вернуться"],["get back at","to take revenge on someone","She wanted to get back at him.","отомстить"],["get by","to manage with little","We get by on a budget.","перебиваться, справляться"],["get down to","to start doing seriously","Let's get down to business.","взяться всерьёз за"],["get on with","to have a good relationship; continue","I get on with my colleagues.","ладить; продолжать"],["get over","to recover from something","He got over the illness.","оправиться, пережить"],["get rid of","to remove or dispose of","Get rid of these clothes.","избавиться от"],["get through","to complete; to reach by phone","I got through to support.","пройти через; дозвониться"],["get up","to rise from bed","I get up at six.","вставать (с постели)"],["get around","to travel; to avoid a problem","She gets around by bike.","передвигаться; обходить"]],take:[["take after","to resemble a relative","She takes after her mother.","быть похожим на"],["take apart","to separate into pieces","He took the engine apart.","разобрать на части"],["take back","to retract; to return an item","I take back what I said.","забрать слова; вернуть товар"],["take in","to understand; to deceive","A lot to take in.","усвоить; обмануть"],["take off","of a plane, to leave ground; to succeed","The plane took off.","взлететь; стать успешным"],["take on","to accept a task; to hire","They're taking on staff.","взять на себя; нанять"],["take over","to assume control","She took over the project.","взять управление"],["take up","to start a hobby; to occupy","He took up painting.","увлечься; занять"]],come:[["come across","to find by chance; to seem","I came across a photo.","наткнуться на; казаться"],["come along","to progress; to accompany","The project is coming along.","продвигаться; пойти вместе"],["come around","to change opinion; to visit; to regain consciousness","She came around to it.","передумать; зайти; очнуться"],["come down with","to become ill","He came down with a cold.","заболеть"],["come out","to be released; to become known","The truth came out.","выйти; выясниться"],["come up","to arise unexpectedly","Something came up.","возникнуть неожиданно"],["come up with","to think of an idea","She came up with a plan.","придумать"],["come to","to regain consciousness; to total","The bill came to $50.","прийти в себя; составить"]],go:[["go ahead","to proceed","Go ahead without me.","продолжай, действуй"],["go along with","to support a plan","I went along with it.","согласиться, поддержать"],["go back on","to break a promise","He went back on his word.","нарушить (обещание)"],["go by","of time, to pass; to judge by","The years went by.","проходить; руководствоваться"],["go off","to explode/sound; to spoil","The alarm went off.","сработать; испортиться"],["go over","to review carefully","Let's go over it.","пересмотреть, проверить"],["go through","to endure; to examine","She's going through a lot.","пережить; изучить"],["go without","to manage without","They went without heat.","обходиться без"]],put:[["put across","to communicate an idea","He put his point across.","донести (мысль)"],["put aside","to save; to ignore","We put aside money.","отложить"],["put down","to write; to criticize; to set down","Put down your phones.","записать; унизить; положить"],["put off","to postpone; to discourage","Don't put it off.","отложить; отпугнуть"],["put out","to extinguish; to inconvenience","They put out the fire.","потушить; причинить неудобство"],["put together","to assemble","We put it together.","собрать, составить"],["put up with","to tolerate","I can't put up with it.","терпеть, мириться с"],["put forward","to suggest","She put forward a plan.","выдвинуть"]],turn:[["turn down","to refuse; to lower volume","He turned it down.","отклонить; убавить"],["turn into","to become something else","It turned into a mess.","превратиться в"],["turn out","to happen a way; to attend","It turned out great.","оказаться; собраться"],["turn up","to arrive; to raise volume","She turned up late.","объявиться; прибавить"],["turn over","to hand over; to flip","He turned it over.","передать; перевернуть"],["turn against","to become hostile toward","They turned against him.","настроиться против"]],break:[["break down","to stop working; to become upset","The car broke down.","сломаться; расстроиться"],["break in","to enter illegally; to interrupt","Thieves broke in.","вломиться; перебить"],["break out","to escape; to begin suddenly","A fire broke out.","вырваться; вспыхнуть"],["break up","to end a relationship; to split","They broke up.","расстаться; разбиться"],["break through","to succeed after difficulty","They broke through.","совершить прорыв"]],give:[["give away","to give free; to reveal","She gave it away.","отдать даром; выдать"],["give in","to reluctantly agree","He gave in.","уступить, сдаться"],["give up","to stop trying; to quit","Don't give up.","сдаться; бросить"],["give out","to distribute; to fail","My legs gave out.","раздать; отказать"],["give back","to return","Give back the book.","вернуть"]],look:[["look after","to take care of","She looks after them.","заботиться о"],["look forward to","to anticipate happily","I look forward to it.","предвкушать, ждать"],["look into","to investigate","We'll look into it.","расследовать"],["look up","to search info; to improve","Things are looking up.","искать; улучшаться"],["look down on","to consider inferior","He looks down on them.","смотреть свысока на"]],make:[["make up","to invent; to reconcile; to constitute","They made up after the fight.","придумать; помириться; составлять"],["make out","to see/hear with difficulty; to progress","I couldn't make out the sign.","разглядеть; справляться"],["make for","to move toward; to contribute to","We made for the exit.","направляться к; способствовать"],["make up for","to compensate for","He made up for the delay.","компенсировать, возместить"],["make do","to manage with what you have","We'll make do.","обходиться тем, что есть"],["make off with","to steal and run","They made off with the cash.","сбежать с (украденным)"]],bring:[["bring up","to raise a child; to mention","She brought up the topic.","воспитывать; поднять (тему)"],["bring about","to cause to happen","It brought about change.","вызвать, привести к"],["bring back","to return; to revive a memory","It brings back memories.","вернуть; навеять"],["bring down","to reduce; to topple","They brought down prices.","снизить; свергнуть"],["bring out","to release; to emphasize","It brings out the flavor.","выпустить; подчеркнуть"],["bring in","to introduce; to earn","It brings in profit.","ввести; приносить (доход)"]],run:[["run into","to meet by chance; to hit a problem","I ran into an old friend.","случайно встретить; столкнуться с"],["run out of","to have no more of","We ran out of milk.","исчерпать запас"],["run over","to hit with a vehicle; to review","A car ran over the toy.","сбить; бегло просмотреть"],["run through","to review quickly; to use up","Let's run through it.","быстро пройтись; растратить"],["run away","to escape","The dog ran away.","убежать"],["run by","to tell for an opinion","Run it by me first.","обсудить, изложить"]],set:[["set up","to establish; to arrange; to frame","They set up a company.","учредить; организовать; подставить"],["set off","to start a journey; to trigger","We set off at dawn.","отправиться; спровоцировать"],["set out","to begin with intent; to lay out","He set out to prove it.","приступить; изложить"],["set back","to delay; to cost money","It set us back a week.","задержать; влететь в копеечку"],["set aside","to reserve; to disregard","Set aside some time.","отложить; оставить в стороне"],["set about","to start doing","She set about cleaning.","приняться за"]],call:[["call off","to cancel","They called off the event.","отменить"],["call on","to visit; to ask to act","I'll call on you.","навестить; призвать"],["call for","to require; to demand","This calls for action.","требовать"],["call up","to phone; to summon","He called me up.","позвонить; призвать"],["call out","to shout; to publicly criticize","She called him out.","выкрикнуть; осудить публично"],["call back","to return a call","I'll call you back.","перезвонить"]],keep:[["keep up","to maintain pace; to continue","Keep up the good work.","не отставать; продолжать"],["keep on","to continue doing","He kept on talking.","продолжать"],["keep out","to prevent entry","Keep out of trouble.","не впускать; держаться подальше"],["keep to","to adhere to","Keep to the plan.","придерживаться"],["keep away","to stay at a distance","Keep away from the edge.","держаться подальше"],["keep back","to withhold; to restrain","He kept back the truth.","утаивать; сдерживать"]]};
-const IDIOMS=[["hit the books","to study hard","I need to hit the books.","зубрить, усердно учиться"],["under the weather","feeling slightly ill","I feel under the weather.","неважно себя чувствовать"],["break the ice","to relieve tension","He broke the ice with a joke.","растопить лёд"],["cost an arm and a leg","to be very expensive","It cost an arm and a leg.","стоить бешеных денег"],["let the cat out of the bag","to reveal a secret accidentally","She let the cat out of the bag.","проболтаться"],["hit the nail on the head","to be exactly right","You hit the nail on the head.","попасть в точку"],["once in a blue moon","very rarely","We meet once in a blue moon.","очень редко"],["burn the midnight oil","to work late into the night","She burned the midnight oil.","засиживаться допоздна"],["beat around the bush","to avoid the point","Stop beating around the bush.","ходить вокруг да около"],["throw in the towel","to give up","He threw in the towel.","сдаться"],["spill the beans","to reveal secret info","Someone spilled the beans.","раскрыть секрет"],["the ball is in your court","it's your decision now","The ball is in your court.","решение за тобой"],["bite the bullet","to endure something painful","I had to bite the bullet.","стиснуть зубы и терпеть"],["a piece of cake","something very easy","The test was a piece of cake.","проще простого"],["on the fence","undecided","I'm on the fence about it.","колебаться"],["call it a day","to stop working","Let's call it a day.","закончить на сегодня"],["cut corners","to skimp to save time/money","They cut corners.","экономить в ущерб качеству"],["get out of hand","to become uncontrollable","It got out of hand.","выйти из-под контроля"],["hit the sack","to go to bed","Time to hit the sack.","завалиться спать"],["in hot water","in trouble","He's in hot water.","в неприятностях"],["keep an eye on","to watch carefully","Keep an eye on it.","присматривать за"],["make a long story short","to be brief","To make a long story short, we won.","короче говоря"],["miss the boat","to miss an opportunity","You'll miss the boat.","упустить возможность"],["on thin ice","in a risky situation","He's on thin ice.","в рискованном положении"],["pull someone's leg","to joke with someone","I'm pulling your leg.","разыгрывать, дурачить"],["see eye to eye","to agree","We see eye to eye.","сходиться во мнениях"],["speak of the devil","when someone appears after being mentioned","Speak of the devil!","лёгок на помине"],["the last straw","the final problem","That was the last straw.","последняя капля"],["under someone's nose","openly but unnoticed","Right under our nose.","под носом"],["wrap your head around","to understand something hard","I can't wrap my head around it.","осмыслить, уложить в голове"],["the tip of the iceberg","a small visible part of a big problem","This is just the tip of the iceberg.","верхушка айсберга"],["a blessing in disguise","a good thing that first seemed bad","It was a blessing in disguise.","не было бы счастья, да несчастье помогло"],["back to the drawing board","to start over after failure","It's back to the drawing board.","начать заново"],["barking up the wrong tree","pursuing a mistaken course","You're barking up the wrong tree.","идти по ложному следу"],["the best of both worlds","an ideal mix of two advantages","She has the best of both worlds.","лучшее из двух миров"],["a dime a dozen","very common and cheap","Places like this are a dime a dozen.","пруд пруди, дёшево и сердито"],["cry over spilt milk","to be upset over what can't be undone","Don't cry over spilt milk.","плакать над пролитым молоком"],["hit the ground running","to start energetically","She hit the ground running.","с ходу взяться за дело"],["jump on the bandwagon","to join a popular trend","Everyone jumped on the bandwagon.","примкнуть к большинству"],["the elephant in the room","an obvious problem no one mentions","Let's address the elephant in the room.","очевидная проблема, которую все игнорируют"],["go the extra mile","to make more effort than expected","She goes the extra mile.","сделать больше ожидаемого"],["kill two birds with one stone","to solve two problems at once","This kills two birds with one stone.","убить двух зайцев"],["let sleeping dogs lie","to avoid restarting a conflict","Let sleeping dogs lie.","не буди лихо"],["off the top of my head","from memory, without checking","Off the top of my head, twenty.","навскидку"],["on the ball","alert and competent","She's really on the ball.","расторопный, сообразительный"],["pull yourself together","to regain control","Pull yourself together.","взять себя в руки"],["steal someone's thunder","to take credit or attention from someone","Don't steal her thunder.","перехватить лавры"],["under the radar","without attracting attention","They stayed under the radar.","незаметно, вне поля зрения"],["a wake-up call","an event prompting change","It was a wake-up call.","тревожный звоночек"],["burn bridges","to destroy relationships","Don't burn bridges.","сжигать мосты"],["the whole nine yards","everything possible","They went the whole nine yards.","по полной программе"]];
-const TALK=[
-  {title:"Interview",emoji:"💼",lines:[
-    {who:"them",en:"Thanks for coming in. Could you tell me a bit about yourself?",ru:"Спасибо, что пришли. Расскажите немного о себе."},
-    {who:"you",en:"Of course. I'm a diligent, resilient person who enjoys tackling complex problems.",ru:"Конечно. Я прилежный и стойкий человек, который любит решать сложные задачи."},
-    {who:"them",en:"What would you say is your greatest strength?",ru:"В чём, по-вашему, ваша главная сильная сторона?"},
-    {who:"you",en:"I'm meticulous — I pay attention to detail and rarely cut corners.",ru:"Я дотошный — уделяю внимание деталям и редко халтурю."},
-    {who:"them",en:"And how do you handle pressure?",ru:"А как вы справляетесь с давлением?"},
-    {who:"you",en:"I stay calm and get down to business instead of putting things off.",ru:"Сохраняю спокойствие и берусь за дело, а не откладываю."},
-    {who:"them",en:"Great. We'll be in touch soon.",ru:"Отлично. Мы скоро свяжемся с вами."},
-    {who:"you",en:"Thank you. I look forward to hearing from you.",ru:"Спасибо. Буду ждать вашего ответа."}
-  ]},
-  {title:"Small talk",emoji:"☕",lines:[
-    {who:"them",en:"Hey! Long time no see. How have you been?",ru:"Привет! Сто лет не виделись. Как ты?"},
-    {who:"you",en:"Pretty good, thanks! I've just been keeping busy with work.",ru:"Неплохо, спасибо! Всё в делах и заботах."},
-    {who:"them",en:"Same here. Did you do anything fun over the weekend?",ru:"Аналогично. Занимался чем-нибудь интересным на выходных?"},
-    {who:"you",en:"Not much — once in a blue moon I actually relax.",ru:"Да не особо — отдыхаю раз в сто лет."},
-    {who:"them",en:"Ha, I know the feeling. We should grab a coffee sometime.",ru:"Ха, знакомое чувство. Надо бы как-нибудь выпить кофе."},
-    {who:"you",en:"Definitely. I'm looking forward to it.",ru:"Обязательно. Буду ждать."}
-  ]},
-  {title:"Disagree",emoji:"🤝",lines:[
-    {who:"them",en:"I think we should launch the product next week.",ru:"Думаю, нам стоит запустить продукт на следующей неделе."},
-    {who:"you",en:"I see your point, but I'm on the fence about the timing.",ru:"Понимаю тебя, но насчёт сроков я сомневаюсь."},
-    {who:"them",en:"Why's that?",ru:"Почему?"},
-    {who:"you",en:"Rushing might mean cutting corners, and that could backfire.",ru:"Спешка может привести к халтуре, и это выйдет боком."},
-    {who:"them",en:"That's fair. What do you suggest?",ru:"Справедливо. Что предлагаешь?"},
-    {who:"you",en:"Let's go over the plan once more before we commit.",ru:"Давай ещё раз пройдёмся по плану, прежде чем решаться."}
-  ]},
-  {title:"Making plans",emoji:"📅",lines:[
-    {who:"them",en:"Are you free this Saturday?",ru:"Ты свободен в субботу?"},
-    {who:"you",en:"I think so. What did you have in mind?",ru:"Вроде да. Что ты задумал?"},
-    {who:"them",en:"There's a new exhibition downtown. Want to check it out?",ru:"В центре новая выставка. Хочешь сходить?"},
-    {who:"you",en:"Sounds great. Let's kill two birds with one stone and grab lunch after.",ru:"Здорово. Давай убьём двух зайцев и пообедаем после."},
-    {who:"them",en:"Perfect. I'll text you the details.",ru:"Отлично. Скину тебе детали."},
-    {who:"you",en:"Great, I'll pencil it in.",ru:"Супер, отмечу у себя."}
-  ]},
-  {title:"At a café",emoji:"🍮",lines:[
-    {who:"them",en:"Hi, what can I get for you?",ru:"Здравствуйте, что вам принести?"},
-    {who:"you",en:"Could I have a flat white, please?",ru:"Можно, пожалуйста, флэт-уайт?"},
-    {who:"them",en:"Sure. Anything to eat?",ru:"Конечно. Что-нибудь поесть?"},
-    {who:"you",en:"I'll pass for now, thanks.",ru:"Пока воздержусь, спасибо."},
-    {who:"them",en:"No problem. That'll be four fifty.",ru:"Без проблем. С вас четыре пятьдесят."},
-    {who:"you",en:"Here you go. Keep the change.",ru:"Вот, пожалуйста. Сдачи не надо."}
-  ]}
+/* ============ TOPICS: строгое разделение Speaking / Writing ============ */
+const TOPICS=[
+/* ---------- SPEAKING ---------- */
+{id:"sp-idioms",side:"speaking",emoji:"💬",title:"Идиомы: база",free:true,cards:[
+["a piece of cake","something very easy","The exam was a piece of cake.","проще простого","Только Speaking. В Task 2 это звучит несерьёзно — эксперт снизит балл за неуместный регистр."],
+["hit the books","to study hard","I have to hit the books this weekend.","засесть за учёбу","Только Speaking, Part 1–2. В эссе — study intensively."],
+["once in a blue moon","very rarely","I go out once in a blue moon.","очень редко","Speaking. В Writing — rarely / infrequently."],
+["under the weather","feeling slightly ill","I was under the weather last week.","неважно себя чувствовать","Speaking. В Writing — unwell."],
+["break the ice","to relieve tension","A joke helped break the ice.","растопить лёд","Speaking. В Writing допустимо только в кавычках, лучше избегать."],
+["cost an arm and a leg","to be very expensive","Housing costs an arm and a leg here.","стоить бешеных денег","Speaking. В Writing — prohibitively expensive."],
+["on the fence","undecided","I'm on the fence about it.","колебаться","Speaking Part 3, когда не можешь выбрать сторону."],
+["call it a day","to stop working","We called it a day at six.","закончить на сегодня","Только Speaking."],
+["get out of hand","to become uncontrollable","Things got out of hand.","выйти из-под контроля","Speaking. В Writing — become unmanageable."],
+["a wake-up call","an event prompting change","The floods were a wake-up call.","тревожный звоночек","Speaking. В Writing изредка можно, но осторожно."],
+["play it by ear","to improvise as you go","We'll play it by ear.","действовать по обстоятельствам","Только Speaking."],
+["the last straw","the final problem","That was the last straw.","последняя капля","Только Speaking."]]},
+
+{id:"sp-phrasal",side:"speaking",emoji:"🔁",title:"Фразовые для речи",free:true,cards:[
+["get on with","to have a good relationship with","I get on with my classmates.","ладить с","Speaking Part 1. В Writing — maintain good relations with."],
+["look forward to","to anticipate happily","I'm looking forward to it.","предвкушать","Speaking + неформальные письма. В эссе — anticipate."],
+["put up with","to tolerate","I can't put up with the noise.","мириться с","Speaking. В Writing — tolerate / endure."],
+["come up with","to think of an idea","She came up with a solution.","придумать","Speaking. В Writing — devise / propose."],
+["end up","to finally be in a situation","I ended up staying home.","в итоге оказаться","Speaking. В Writing — ultimately."],
+["turn out","to happen a certain way","It turned out fine.","оказаться","Speaking. В Writing — prove to be."],
+["run out of","to have no more of","We ran out of time.","исчерпать","Speaking. В Writing — deplete / exhaust."],
+["find out","to discover","I found out yesterday.","узнать","Speaking. В Writing — discover / establish."],
+["get over","to recover from","He got over the flu.","оправиться от","Speaking. В Writing — recover from."],
+["give up","to stop trying","Don't give up.","сдаться","Speaking. В Writing — abandon / relinquish."],
+["set up","to establish","They set up a charity.","учредить","Нейтрально — можно в обоих, в Writing лучше establish."],
+["carry out","to perform a task","They carried out a study.","провести","Редкий случай: годится и в Writing. Carry out research — стандарт."]]},
+
+{id:"sp-fillers",side:"speaking",emoji:"🎙️",title:"Филлеры и связки речи",free:false,cards:[
+["Well, let me think for a second…","natural pause while you gather thoughts","Well, let me think for a second… I'd say yes.","дай-ка подумать секунду","Спасает от тишины. Экзаменатор оценивает fluency — пауза с фразой лучше молчания. В Writing НИКОГДА."],
+["That's a tricky one, actually.","acknowledging a hard question","That's a tricky one, actually.","непростой вопрос, если честно","Speaking Part 3. Даёт 2 секунды на подумать."],
+["I suppose you could argue that…","softly introducing a view","I suppose you could argue that it's necessary.","пожалуй, можно утверждать, что","Speaking Part 3. В Writing — It could be argued that."],
+["Off the top of my head…","speaking from memory without checking","Off the top of my head, maybe three reasons.","навскидку","Только Speaking."],
+["To be honest with you…","signalling frankness","To be honest with you, I've never tried it.","честно говоря","Speaking. В Writing — вообще нет."],
+["It depends, really.","refusing a simple answer","It depends, really — on the country.","смотря как, на самом деле","Speaking Part 3. Показывает, что видишь нюанс."],
+["Having said that…","introducing a contrast","Having said that, there are downsides.","при этом, однако","Работает и в Speaking, и в Writing. Редкий универсал."],
+["The thing is…","introducing the key point","The thing is, most people can't afford it.","дело в том, что","Только Speaking."],
+["I'd go so far as to say…","strengthening a claim","I'd go so far as to say it's essential.","я бы даже сказал, что","Speaking Part 3, для сильного мнения."],
+["Not that I'm aware of.","polite negative","Not that I'm aware of.","насколько я знаю, нет","Speaking Part 1."],
+["It's hard to say, but my guess is…","hedging a prediction","It's hard to say, but my guess is prices will rise.","трудно сказать, но полагаю","Speaking. В Writing — It is difficult to predict, though prices are likely to rise."],
+["Sorry, could you rephrase that?","asking for clarification","Sorry, could you rephrase that?","извините, можно переформулировать?","Разрешено в Part 1 и 3. Лучше переспросить, чем ответить не на тот вопрос."]]},
+
+{id:"sp-topic-env",side:"speaking",emoji:"🌍",title:"Идиомы: экология и общество",free:false,cards:[
+["a drop in the ocean","a tiny amount compared to what's needed","Recycling at home is a drop in the ocean.","капля в море","Speaking Part 3 про экологию. Мощно звучит."],
+["turn a blind eye to","to deliberately ignore","Governments turn a blind eye to pollution.","закрывать глаза на","Speaking. В Writing — deliberately overlook."],
+["pay the price for","to suffer consequences","Future generations will pay the price for it.","расплачиваться за","Работает в обоих, но в Writing лучше bear the consequences of."],
+["a double-edged sword","something with good and bad effects","Tourism is a double-edged sword.","палка о двух концах","Speaking Part 3. Идеально для вопросов advantages/disadvantages."],
+["the tip of the iceberg","a small part of a big problem","Plastic waste is just the tip of the iceberg.","верхушка айсберга","Speaking. В Writing изредка допустимо."],
+["at a crossroads","at a decisive point","Society is at a crossroads.","на распутье","Speaking Part 3."],
+["bridge the gap","to reduce a difference","We need to bridge the gap between rich and poor.","сократить разрыв","Работает в обоих. В Writing — вполне уместно."],
+["a false economy","saving that costs more later","Cheap materials are a false economy.","мнимая экономия","Speaking. В Writing тоже можно."],
+["out of touch with","not understanding current reality","Politicians are out of touch with young people.","оторван от","Speaking. В Writing — disconnected from."],
+["take its toll on","to cause damage over time","Long hours take their toll on health.","сказываться на","Работает в обоих. Хорошая фраза."],
+["a slippery slope","a course leading to something bad","It's a slippery slope towards censorship.","скользкая дорожка","Speaking Part 3."],
+["in the long run","over an extended period","It pays off in the long run.","в долгосрочной перспективе","Универсал — можно и в эссе."]]},
+
+{id:"sp-boost",side:"speaking",emoji:"⚡",title:"Разговорные усилители",free:false,cards:[
+["absolutely brilliant","extremely good","The film was absolutely brilliant.","просто отличный","Speaking. Заменяет very good. В Writing — нет."],
+["utterly pointless","completely useless","The rule is utterly pointless.","совершенно бессмысленный","Speaking. В Writing — entirely ineffective."],
+["incredibly frustrating","very annoying","Traffic here is incredibly frustrating.","невероятно раздражающий","Speaking Part 1–2."],
+["dead easy","very easy (informal)","The test was dead easy.","проще некуда","Только Speaking, и то неформально. Экзаменатор оценит естественность."],
+["a massive difference","a very big difference","It made a massive difference.","огромная разница","Speaking. В Writing — a substantial difference."],
+["pretty much","almost entirely","I've pretty much finished.","практически","Speaking. В Writing — largely."],
+["way too expensive","far too expensive","It's way too expensive.","слишком уж дорого","Speaking. В Writing — prohibitively expensive."],
+["not exactly cheap","expensive (understatement)","It's not exactly cheap.","не сказать, что дёшево","Speaking. Британская сдержанность, звучит естественно."],
+["a bit of a nightmare","quite difficult or stressful","Commuting is a bit of a nightmare.","та ещё морока","Только Speaking."],
+["I'm not massively into…","I don't like it much","I'm not massively into sport.","я не особо увлекаюсь","Speaking Part 1, звучит очень естественно."]]},
+
+/* ---------- WRITING ---------- */
+{id:"wr-academic",side:"writing",emoji:"📘",title:"Академические C1 слова",free:true,cards:[
+["significant","large enough to be important","There was a significant increase in demand.","значительный","Writing Task 1 и 2. Заменяет big. НЕ используй significant вместо important в речи — звучит натянуто."],
+["substantial","considerable in amount","A substantial proportion of students agreed.","существенный","Writing. Идеально для описания долей в Task 1."],
+["detrimental","causing harm","Excessive screen time is detrimental to health.","пагубный","Только Writing. В речи — bad for."],
+["prevalent","widespread in a place or time","Obesity is prevalent in developed nations.","распространённый","Writing Task 2."],
+["inevitable","certain to happen","Some job losses are inevitable.","неизбежный","Writing. В речи можно, но реже."],
+["compelling","powerfully convincing","There is compelling evidence for this.","убедительный","Writing. Compelling evidence — устойчивая связка."],
+["viable","capable of working successfully","Solar power is a viable alternative.","жизнеспособный","Writing Task 2, для предложений решений."],
+["adverse","unfavourable or harmful","Adverse effects were reported.","неблагоприятный","Только Writing. Формальный регистр."],
+["profound","very deep or intense","The policy had a profound impact.","глубокий","Writing. Profound impact — сильнее, чем big impact."],
+["negligible","so small as to be unimportant","The difference was negligible.","ничтожный","Writing Task 1, для описания минимальных изменений."],
+["unprecedented","never done or known before","Growth reached unprecedented levels.","беспрецедентный","Writing. Осторожно: не преувеличивай."],
+["conducive","making an outcome likely","A quiet room is conducive to concentration.","способствующий","Только Writing. Конструкция: conducive TO something."]]},
+
+{id:"wr-linking",side:"writing",emoji:"🔗",title:"Вводные конструкции",free:false,cards:[
+["It could be argued that…","introducing a debatable claim","It could be argued that technology isolates us.","можно утверждать, что","Writing Task 2, для чужой позиции. В речи — you could argue that."],
+["A further consideration is…","adding a second point","A further consideration is the cost.","следует также учесть","Writing. Заменяет also, которое слишком простое для C1."],
+["This is largely attributable to…","explaining a cause","This is largely attributable to urbanisation.","это во многом объясняется","Writing Task 1 и 2. Сильная конструкция."],
+["Notwithstanding this…","despite this","Notwithstanding this, support remains high.","несмотря на это","Только Writing, очень формально. В речи звучит странно."],
+["In light of the above…","given what was said","In light of the above, reform seems necessary.","с учётом сказанного","Writing, ближе к выводу."],
+["There is a strong case for…","arguing in favour","There is a strong case for stricter regulation.","есть весомые основания для","Writing Task 2, для своей позиции."],
+["Conversely,","introducing an opposite","Conversely, rural areas saw a decline.","напротив","Writing Task 1 — идеально для сравнения трендов."],
+["To a certain extent,","partially agreeing","To a certain extent, this is true.","в определённой степени","Writing. Показывает нюанс, эксперты это ценят."],
+["Consequently,","as a result","Consequently, unemployment rose.","следовательно","Writing. Сильнее, чем so."],
+["Whereas","in contrast to","Whereas exports rose, imports fell.","тогда как","Writing Task 1. Соединяет два контраста в одном предложении."],
+["It is worth noting that…","highlighting a detail","It is worth noting that the trend reversed in 2019.","стоит отметить, что","Writing Task 1."],
+["On balance,","weighing everything up","On balance, the benefits outweigh the risks.","в целом, взвесив всё","Writing, для заключения Task 2. Очень сильный маркер."]]},
+
+{id:"wr-verbs",side:"writing",emoji:"✒️",title:"Официальные глаголы",free:false,cards:[
+["demonstrate","to show clearly with evidence","The data demonstrates a clear trend.","демонстрировать","Writing. Заменяет show. В речи show звучит естественнее."],
+["indicate","to point to or suggest","The graph indicates steady growth.","указывать на","Writing Task 1. Основной глагол для описания графиков."],
+["undermine","to weaken gradually","This undermines public trust.","подрывать","Writing Task 2."],
+["exacerbate","to make a problem worse","Traffic exacerbates air pollution.","усугублять","Только Writing. Сильный C1-глагол."],
+["mitigate","to reduce the severity of","Trees mitigate the effects of heat.","смягчать","Writing Task 2, для решений. Часто в паре: mitigate the impact."],
+["implement","to put into effect","The government implemented a ban.","внедрять","Writing. Заменяет do / carry out."],
+["allocate","to distribute for a purpose","Funds were allocated to education.","выделять, распределять","Writing Task 2, про бюджеты и ресурсы."],
+["constitute","to form or make up","Women constitute half the workforce.","составлять","Writing Task 1, для описания долей."],
+["attribute (to)","to say something is caused by","The rise is attributed to migration.","приписывать, объяснять","Writing. Обычно в пассиве: is attributed to."],
+["facilitate","to make easier","Technology facilitates remote work.","облегчать, способствовать","Writing. Заменяет help."],
+["accumulate","to gather over time","Waste accumulates in landfills.","накапливаться","Writing."],
+["deteriorate","to become worse","Air quality has deteriorated.","ухудшаться","Writing Task 1. Заменяет get worse."]]},
+
+{id:"wr-charts",side:"writing",emoji:"📊",title:"Task 1: графики и данные",free:false,cards:[
+["a marked increase","a clearly noticeable rise","There was a marked increase in sales.","заметный рост","Только Writing Task 1. Заменяет a big increase."],
+["plateau","to stop rising and stay level","Figures plateaued after 2015.","выйти на плато","Writing Task 1. Глагол и существительное сразу."],
+["fluctuate","to rise and fall irregularly","Prices fluctuated throughout the year.","колебаться","Writing Task 1. Обязательный глагол для нестабильных линий."],
+["peak at","to reach the highest point","Numbers peaked at 40%.","достичь пика в","Writing Task 1. Конструкция: peaked AT a figure IN a year."],
+["a steady decline","a gradual continuous fall","The chart shows a steady decline.","устойчивый спад","Writing Task 1."],
+["account for","to make up a proportion","Imports account for 30% of the total.","составлять долю","Writing Task 1. Ключевая конструкция для процентов."],
+["respectively","in the order mentioned","Figures were 20% and 35% respectively.","соответственно","Writing Task 1. Экономит целое предложение."],
+["outstrip","to exceed by a large margin","Demand outstripped supply.","превосходить, опережать","Writing Task 1, для сравнений."],
+["negligible change","almost no change","There was negligible change after 2018.","незначительное изменение","Writing Task 1."],
+["over the period in question","during the time shown","Consumption doubled over the period in question.","за рассматриваемый период","Writing Task 1. Заменяет in these years."],
+["approximately","roughly, about","Approximately half the group agreed.","приблизительно","Writing. Не пиши точные цифры, если график нечёткий."],
+["a downward trend","a general falling pattern","The data reveals a downward trend.","нисходящая тенденция","Writing Task 1."]]},
+
+{id:"wr-hedging",side:"writing",emoji:"🛡️",title:"Осторожные формулировки",free:false,cards:[
+["tend to","to usually do something","Younger people tend to adapt faster.","обычно склонны","Writing. Спасает от категоричности. Эксперты снимают баллы за overgeneralisation."],
+["is likely to","is probable","This is likely to continue.","вероятно, будет","Writing. Заменяет will, когда ты не уверен."],
+["may well","quite possibly","Costs may well rise further.","вполне возможно, что","Writing Task 2."],
+["arguably","possibly, in a debatable way","This is arguably the main cause.","возможно, спорно, что","Writing. Мощное слово, но не злоупотребляй."],
+["in most cases","usually but not always","In most cases, this approach works.","в большинстве случаев","Writing. Смягчает обобщение."],
+["appears to","seems to","The trend appears to be reversing.","судя по всему","Writing Task 1, когда данные неоднозначны."],
+["a contributing factor","one cause among several","Diet is a contributing factor.","один из факторов","Writing. Честнее, чем the cause."],
+["to some degree","partially","This is true to some degree.","в некоторой степени","Writing Task 2."],
+["there is some evidence that","partial support exists","There is some evidence that it helps.","есть некоторые свидетельства","Writing. Академически корректно."],
+["broadly speaking","in general terms","Broadly speaking, the pattern holds.","в общих чертах","Writing."]]}
 ];
-const SKINS=[
-  {id:"aurora",name:"Aurora",emoji:"🌌",cost:0,bg:"linear-gradient(160deg,#EDE9FF,#E7F1FF)"},
-  {id:"mint",name:"Mint",emoji:"🌿",cost:15,bg:"linear-gradient(160deg,#DBF6EA,#E9FBF2)"},
-  {id:"sunset",name:"Sunset",emoji:"🌅",cost:40,bg:"linear-gradient(160deg,#FFE7D6,#FFE1EC)"},
-  {id:"ocean",name:"Ocean",emoji:"🌊",cost:80,bg:"linear-gradient(160deg,#D3EBFF,#DCF3FF)"},
-  {id:"rose",name:"Rosé",emoji:"🌸",cost:140,bg:"linear-gradient(160deg,#FFE0EC,#FFEAF3)"},
-  {id:"gold",name:"Gold",emoji:"👑",cost:250,bg:"linear-gradient(160deg,#FFF3D6,#FFE9C7)"}
-];
+
+/* ============ АПГРЕЙД СЛОВ: базовое → C1 ============ */
+const UPGRADE={
+"good":[["beneficial","W","полезный — beneficial to health"],["favourable","W","благоприятный — favourable conditions"],["brilliant","S","отличный — absolutely brilliant"],["worthwhile","B","стоящий — a worthwhile investment"]],
+"bad":[["detrimental","W","пагубный — detrimental to health"],["adverse","W","неблагоприятный — adverse effects"],["awful","S","ужасный — it was awful"],["harmful","B","вредный — harmful substances"]],
+"big":[["substantial","W","существенный — a substantial rise"],["significant","W","значительный — significant growth"],["massive","S","огромный — a massive difference"],["considerable","W","немалый — considerable expense"]],
+"small":[["negligible","W","ничтожный — a negligible change"],["marginal","W","незначительный — a marginal decline"],["tiny","S","крошечный — a tiny amount"],["minimal","B","минимальный — minimal impact"]],
+"important":[["crucial","B","решающий — a crucial factor"],["paramount","W","первостепенный — of paramount importance"],["vital","B","жизненно важный — vital resources"],["key","S","ключевой — the key thing is"]],
+"happy":[["content","B","довольный — content with the outcome"],["delighted","B","в восторге — delighted to hear it"],["over the moon","S","на седьмом небе — I was over the moon"],["satisfied","W","удовлетворённый — satisfied with results"]],
+"sad":[["distressed","W","подавленный — distressed by the news"],["disheartened","W","обескураженный — disheartened by failure"],["gutted","S","убит горем (разг.) — I was gutted"],["discouraging","W","удручающий — a discouraging trend"]],
+"difficult":[["challenging","B","сложный — a challenging task"],["demanding","W","требовательный — a demanding role"],["tricky","S","хитрый, непростой — that's tricky"],["formidable","W","серьёзный — a formidable obstacle"]],
+"easy":[["straightforward","B","простой, понятный — a straightforward process"],["effortless","W","лёгкий — effortless integration"],["a piece of cake","S","проще простого — it was a piece of cake"],["manageable","B","посильный — a manageable workload"]],
+"interesting":[["compelling","W","захватывающий — a compelling argument"],["thought-provoking","W","заставляющий думать — thought-provoking research"],["fascinating","B","увлекательный — a fascinating topic"],["intriguing","W","интригующий — an intriguing finding"]],
+"beautiful":[["stunning","S","потрясающий — a stunning view"],["breathtaking","S","захватывающий дух — breathtaking scenery"],["aesthetically pleasing","W","эстетичный — aesthetically pleasing design"],["picturesque","B","живописный — a picturesque village"]],
+"a lot of":[["a substantial amount of","W","значительное количество"],["numerous","W","многочисленные — numerous studies"],["loads of","S","куча (разг.) — loads of people"],["a considerable number of","W","немалое число"]],
+"very":[["highly","W","крайне — highly effective"],["remarkably","W","поразительно — remarkably consistent"],["incredibly","S","невероятно — incredibly frustrating"],["exceptionally","W","исключительно — exceptionally rare"]],
+"get":[["obtain","W","получать — obtain permission"],["acquire","W","приобретать — acquire skills"],["pick up","S","подхватить — pick up a language"],["secure","W","добиться — secure funding"]],
+"make":[["produce","W","производить — produce results"],["generate","W","порождать — generate income"],["create","B","создавать — create opportunities"],["bring about","W","вызывать — bring about change"]],
+"show":[["demonstrate","W","демонстрировать — the data demonstrates"],["indicate","W","указывать — the graph indicates"],["reveal","W","раскрывать — the study reveals"],["highlight","B","подчёркивать — highlight the need for"]],
+"think":[["believe","B","полагать — I believe that"],["maintain","W","утверждать — critics maintain that"],["reckon","S","считать (разг.) — I reckon so"],["contend","W","доказывать — some contend that"]],
+"say":[["state","W","заявлять — the report states"],["assert","W","утверждать — assert that"],["point out","B","отмечать — point out that"],["claim","W","заявлять (спорно) — critics claim"]],
+"help":[["facilitate","W","облегчать — facilitate learning"],["assist","W","содействовать — assist students"],["give a hand","S","подсобить — give me a hand"],["support","B","поддерживать — support development"]],
+"problem":[["issue","B","вопрос, проблема — a pressing issue"],["obstacle","W","препятствие — a major obstacle"],["setback","W","неудача — a serious setback"],["headache","S","головная боль — a real headache"]],
+"thing":[["factor","W","фактор — a key factor"],["aspect","W","аспект — an important aspect"],["element","W","элемент — a crucial element"],["stuff","S","штуки (разг.) — all that stuff"]],
+"people":[["individuals","W","индивиды — young individuals"],["the population","W","население — the urban population"],["folk","S","народ (разг.) — local folk"],["citizens","W","граждане — ordinary citizens"]],
+"change":[["transform","W","преобразовать — transform the industry"],["alter","W","изменить — alter the outcome"],["shift","B","сдвиг — a shift in attitudes"],["revolutionise","W","совершить переворот — revolutionise medicine"]],
+"increase":[["rise","B","расти — figures rose sharply"],["surge","W","резко подскочить — a surge in demand"],["escalate","W","обостряться — costs escalated"],["go up","S","подняться — prices went up"]],
+"decrease":[["decline","W","снижаться — a steady decline"],["diminish","W","уменьшаться — diminish over time"],["plummet","W","обвалиться — sales plummeted"],["drop","B","упасть — numbers dropped"]],
+"cause":[["trigger","W","спровоцировать — trigger a crisis"],["give rise to","W","породить — give rise to concerns"],["bring about","W","привести к — bring about reform"],["lead to","B","вести к — lead to problems"]],
+"use":[["utilise","W","использовать — utilise resources"],["employ","W","применять — employ a method"],["make use of","B","воспользоваться — make use of data"],["draw on","W","опираться на — draw on evidence"]],
+"need":[["require","W","требовать — require attention"],["necessitate","W","обусловливать необходимость — necessitate reform"],["call for","B","требовать — this calls for action"],["demand","W","требовать — demand resources"]],
+"start":[["initiate","W","инициировать — initiate a project"],["launch","B","запустить — launch a campaign"],["embark on","W","приступить — embark on a career"],["kick off","S","начать (разг.) — kick things off"]],
+"end":[["terminate","W","прекратить — terminate a contract"],["conclude","W","завершить — conclude the study"],["wrap up","S","закруглиться — let's wrap up"],["cease","W","прекратиться — cease operations"]],
+"old":[["outdated","B","устаревший — outdated methods"],["obsolete","W","вышедший из употребления — obsolete technology"],["elderly","W","пожилой — the elderly population"],["ancient","B","древний — ancient traditions"]],
+"new":[["novel","W","новаторский — a novel approach"],["innovative","W","инновационный — innovative solutions"],["cutting-edge","B","передовой — cutting-edge research"],["emerging","W","формирующийся — emerging markets"]],
+"money":[["funds","W","средства — allocate funds"],["capital","W","капитал — raise capital"],["expenditure","W","расходы — public expenditure"],["cash","S","наличка — short of cash"]],
+"job":[["occupation","W","род занятий — a skilled occupation"],["employment","W","занятость — full-time employment"],["career","B","карьера — a career in law"],["gig","S","подработка (разг.) — a side gig"]],
+"idea":[["notion","W","понятие — the notion that"],["concept","W","концепция — a complex concept"],["proposal","W","предложение — an ambitious proposal"],["hunch","S","догадка — I had a hunch"]],
+"angry":[["outraged","W","возмущённый — outraged by the decision"],["indignant","W","негодующий — an indignant response"],["furious","B","в ярости — absolutely furious"],["annoyed","S","раздражённый — a bit annoyed"]],
+"tired":[["exhausted","B","измотанный — completely exhausted"],["fatigued","W","утомлённый — mentally fatigued"],["worn out","S","вымотанный — I'm worn out"],["drained","S","выжатый — I felt drained"]],
+"fast":[["rapid","W","стремительный — rapid growth"],["swift","W","быстрый — a swift response"],["accelerated","W","ускоренный — accelerated decline"],["quick","B","быстрый — a quick fix"]],
+"slow":[["gradual","W","постепенный — a gradual rise"],["sluggish","W","вялый — sluggish growth"],["steady","B","размеренный — a steady pace"],["dragging","S","затянутый — it's dragging on"]],
+"many":[["numerous","W","многочисленные — numerous examples"],["a wide range of","W","широкий спектр — a wide range of options"],["plenty of","S","полно — plenty of time"],["a multitude of","W","множество — a multitude of factors"]],
+"because":[["due to","W","из-за — due to rising costs"],["owing to","W","вследствие — owing to demand"],["as a result of","B","в результате — as a result of the policy"],["since","B","поскольку — since prices rose"]]
+};
+/* ===== настройки ===== */
+const FRIENDS_NEEDED=3;      /* сколько друзей нужно, чтобы открыть всё */
 const DAILY_GOAL=10;
+/* чтобы ослабить замок — поставь free:true у нужных тем в TOPICS выше */
+
+try{if(window.Telegram&&window.Telegram.WebApp){var TG=window.Telegram.WebApp;TG.ready();TG.expand();}}catch(e){}
+const $=id=>document.getElementById(id);
 const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
-function today(){return new Date().toISOString().slice(0,10);}
-let known=store.get('vocab.known',{});
-let daily=store.get('vocab.daily',{date:today(),words:[]});
-let streak=store.get('vocab.streak',{date:today(),count:1});
-let xp=store.get('vocab.xp',0);
-let currentSkin=store.get('vocab.skin','aurora');
-let goalHitToday=store.get('vocab.goalHit','')===today();
-let streakToast='';
-(function(){const t=today();if(daily.date!==t){const y=new Date(Date.now()-864e5).toISOString().slice(0,10);streak.count=(streak.date===y)?streak.count+1:1;streak.date=t;store.set('vocab.streak',streak);daily={date:t,words:[]};store.set('vocab.daily',daily);goalHitToday=false;streakToast='🔥 Стрик '+streak.count+' '+(streak.count===1?'день':'дней')+'! Не бросай!';}})();
-let mode='words',selectedVerb='be',deck=[],order=[],pos=0,stage=0;
+const today=()=>new Date().toISOString().slice(0,10);
 
-/* ---- skins ---- */
-function applySkin(id){const s=SKINS.find(x=>x.id===id)||SKINS[0];document.body.style.background=s.bg;currentSkin=s.id;store.set('vocab.skin',s.id);}
-applySkin(currentSkin);
-function openSkins(){const g=document.getElementById('skins-grid');g.innerHTML='';document.getElementById('skins-sub').textContent='✨ '+xp+' XP · открыто '+SKINS.filter(s=>xp>=s.cost).length+' из '+SKINS.length;SKINS.forEach(s=>{const unlocked=xp>=s.cost;const d=document.createElement('div');d.className='skin'+(unlocked?'':' locked')+(s.id===currentSkin?' active-skin':'');d.style.background=s.bg;d.innerHTML='<div class="emoji">'+s.emoji+'</div><div class="nm">'+s.name+'</div><div class="cost">'+(unlocked?(s.cost===0?'бесплатно':'✓ открыт'):s.cost+' XP')+'</div>';d.onclick=()=>{if(!unlocked){showToast('🔒 Нужно '+s.cost+' XP — пройди ещё '+(s.cost-xp)+' слов');return;}applySkin(s.id);openSkins();};g.appendChild(d);});document.getElementById('skins').classList.add('show');}
-document.getElementById('skins-open').onclick=openSkins;
-document.getElementById('skins-close').onclick=()=>document.getElementById('skins').classList.remove('show');
-function addXp(){const before=xp;xp++;store.set('vocab.xp',xp);const newly=SKINS.filter(s=>s.cost>before&&s.cost<=xp);if(newly.length){const s=newly[newly.length-1];setTimeout(()=>showToast('🎨 Новый скин открыт: '+s.emoji+' '+s.name+'!'),400);}}
+let known=store.get('v2.known',{});
+let daily=store.get('v2.daily',{date:today(),ids:[]});
+let streak=store.get('v2.streak',{date:today(),count:1});
+let xp=store.get('v2.xp',0);
+let invites=store.get('v2.invites',0);
+let skinId=store.get('v2.skin','aurora');
+let goalHit=store.get('v2.goalHit','')===today();
+let startToast='';
+(function(){const t=today();if(daily.date!==t){const y=new Date(Date.now()-864e5).toISOString().slice(0,10);streak.count=(streak.date===y)?streak.count+1:1;streak.date=t;store.set('v2.streak',streak);daily={date:t,ids:[]};store.set('v2.daily',daily);goalHit=false;startToast='🔥 Серия '+streak.count+' дн. Продолжай!';}})();
 
-/* ---- deck ---- */
-function buildDeck(){if(mode==='words'){const c=store.get('vocab.custom',[]);deck=WORDS.concat(c).map(([w,p,d,ru])=>({w,p,d,ex:'',ru:ru||''}));}else if(mode==='phrasal'){deck=PHRASAL[selectedVerb].map(([w,d,ex,ru])=>({w,p:'phrasal verb',d,ex,ru}));}else if(mode==='idioms'){deck=IDIOMS.map(([w,d,ex,ru])=>({w,p:'idiom',d,ex,ru}));}order=deck.map((_,i)=>i);pos=0;}
-function current(){return deck[order[pos]];}
-function knownKey(w){return mode+'::'+w;}
-const card=document.getElementById('card');
-function render(){if(mode==='talk')return;stage=0;const {w,p,d,ex,ru}=current();card.classList.remove('flipped');document.getElementById('word').textContent=w;document.getElementById('pos').textContent=p||'';document.getElementById('idx-tag').textContent='Card '+(pos+1)+' / '+deck.length;document.getElementById('counter').textContent=(pos+1)+'/'+deck.length;const def=document.getElementById('def');def.innerHTML='';d.split(/(\s+)/).forEach(tok=>{if(/^\s+$/.test(tok)){def.appendChild(document.createTextNode(tok));return;}const s=document.createElement('span');s.className='w';s.textContent=tok;s.onclick=ev=>{ev.stopPropagation();lookup(tok,s);};def.appendChild(s);});document.getElementById('example').textContent=ex?'"'+ex+'"':'';const rt=document.getElementById('ru-tags');rt.innerHTML='';(ru||'').split(',').map(s=>s.trim()).filter(Boolean).forEach(v=>{const t=document.createElement('span');t.className='ru-tag';t.textContent=v;rt.appendChild(t);});document.getElementById('translation').classList.remove('show');const kb=document.getElementById('known');const isK=!!known[knownKey(w)];kb.classList.toggle('on',isK);kb.textContent=isK?'✓ Known':'Known';document.getElementById('hint-back').textContent='👆 tap again for translation';renderGoal();}
-function renderGoal(){const n=daily.words.length;const f=document.getElementById('goal-fill');const pct=Math.min(100,n/DAILY_GOAL*100);f.style.width=pct+'%';f.classList.toggle('done',n>=DAILY_GOAL);document.getElementById('goal-label').textContent=n+'/'+DAILY_GOAL+' today';document.getElementById('streak').textContent='🔥 '+streak.count;}
-function countReview(k){if(!daily.words.includes(k)){daily.words.push(k);store.set('vocab.daily',daily);addXp();renderGoal();if(daily.words.length>=DAILY_GOAL&&!goalHitToday){goalHitToday=true;store.set('vocab.goalHit',today());showToast('🔥 Ударный режим! Цель дня выполнена — '+DAILY_GOAL+' слов!');}}}
-let toastTimer=null;
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),3600);}
-function advanceStage(){if(stage===0){stage=1;card.classList.add('flipped');countReview(knownKey(current().w));}else if(stage===1){stage=2;document.getElementById('translation').classList.add('show');document.getElementById('hint-back').textContent='✅ tap Next for a new card';}}
-card.onclick=()=>advanceStage();
-function speak(t){try{window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.9;window.speechSynthesis.speak(u);}catch(e){}}
-document.getElementById('sound-btn').onclick=e=>{e.stopPropagation();speak(current().w);};
-document.getElementById('psound').onclick=e=>{e.stopPropagation();speak(document.getElementById('pword').textContent);};
+const SKINS=[{id:"aurora",n:"Aurora",e:"🌌",c:0,bg:"linear-gradient(160deg,#EDE9FF,#E7F1FF)"},{id:"mint",n:"Mint",e:"🌿",c:10,bg:"linear-gradient(160deg,#DBF6EA,#E9FBF2)"},{id:"sunset",n:"Sunset",e:"🌅",c:25,bg:"linear-gradient(160deg,#FFE7D6,#FFE1EC)"},{id:"ocean",n:"Ocean",e:"🌊",c:50,bg:"linear-gradient(160deg,#D3EBFF,#DCF3FF)"},{id:"rose",n:"Rosé",e:"🌸",c:90,bg:"linear-gradient(160deg,#FFE0EC,#FFEAF3)"},{id:"gold",n:"Gold",e:"👑",c:180,bg:"linear-gradient(160deg,#FFF3D6,#FFE9C7)"}];
+function applySkin(id){const s=SKINS.find(x=>x.id===id)||SKINS[0];document.body.style.background=s.bg;skinId=s.id;store.set('v2.skin',s.id);}
+applySkin(skinId);
 
-/* ---- lookup ---- */
-let litSpan=null,lookedWord='',ruShown=false;
-async function lookup(raw,span){const word=raw.toLowerCase().replace(/[^a-z-]/g,'');if(!word)return;const open=document.getElementById('panel').classList.contains('show');if(word===lookedWord&&open&&!ruShown){showRussian();return;}lookedWord=word;ruShown=false;if(litSpan)litSpan.classList.remove('lit');span.classList.add('lit');litSpan=span;document.getElementById('pword').textContent=word;document.getElementById('pdef').textContent='Looking up…';const pru=document.getElementById('pru');pru.style.display='none';pru.textContent='';document.getElementById('phint').textContent='👆 тапни это же слово ещё раз → 🇷🇺 перевод';document.getElementById('panel').classList.add('show');try{const r=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(word));if(!r.ok)throw 0;const j=await r.json();document.getElementById('pdef').textContent=j[0].meanings[0].definitions[0].definition;}catch(e){document.getElementById('pdef').textContent='Couldn\'t find "'+word+'". Works once online / hosted.';}}
-async function showRussian(){if(ruShown)return;const pru=document.getElementById('pru');pru.style.display='block';pru.textContent='Перевод…';document.getElementById('phint').textContent='';try{const r=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(lookedWord)+'&langpair=en|ru');const j=await r.json();pru.textContent='🇷🇺 '+j.responseData.translatedText;}catch(e){pru.textContent='Не удалось перевести (нужен интернет).';}ruShown=true;}
-document.getElementById('p-ru-btn').onclick=showRussian;
-document.getElementById('panel-x').onclick=()=>{document.getElementById('panel').classList.remove('show');if(litSpan)litSpan.classList.remove('lit');lookedWord='';};
-document.getElementById('add-from-lookup').onclick=()=>{const def=document.getElementById('pdef').textContent;const ru=ruShown?document.getElementById('pru').textContent.replace('🇷🇺 ',''):'';addCard(lookedWord,'',/Couldn.t find/.test(def)?'':def,ru);document.getElementById('panel').classList.remove('show');};
-function addCard(w,p,d,ru){if(!w)return;const e=[w,p||'',d||'',ru||''];const c=store.get('vocab.custom',[]);c.push(e);store.set('vocab.custom',c);if(mode==='words'){buildDeck();pos=deck.length-1;render();}}
+/* ===== замок ===== */
+function unlocked(t){return t.free||invites>=FRIENDS_NEEDED;}
+function lockedCount(){return TOPICS.filter(t=>!unlocked(t)).length;}
 
-/* ---- chips (phrasal verbs) ---- */
-const chipsWrap=document.getElementById('chips');
-function buildChips(){chipsWrap.innerHTML='';Object.keys(PHRASAL).forEach(v=>{const c=document.createElement('button');c.className='chip'+(v===selectedVerb?' active':'');c.textContent=v;c.onclick=()=>{selectedVerb=v;chipsWrap.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');buildDeck();render();};chipsWrap.appendChild(c);});}
-buildChips();
+/* ===== навигация ===== */
+let side='speaking',topic=null,deck=[],order=[],pos=0,stage=0;
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));$(id).classList.add('on');window.scrollTo(0,0);}
+document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>show(b.dataset.back));
+document.querySelectorAll('.big').forEach(b=>b.onclick=()=>{side=b.dataset.side;document.body.dataset.side=side;renderTopics();show('s-topics');});
 
-/* ---- talk mode ---- */
-let scenario=0,shown=1;
-const talkChips=document.getElementById('talk-chips');
-function buildTalkChips(){talkChips.innerHTML='';TALK.forEach((s,i)=>{const c=document.createElement('button');c.className='chip'+(i===scenario?' active':'');c.textContent=s.emoji+' '+s.title;c.onclick=()=>{scenario=i;shown=1;talkChips.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');renderTalk();};talkChips.appendChild(c);});}
-function renderTalk(){const dlg=document.getElementById('dialogue');dlg.innerHTML='';const lines=TALK[scenario].lines;for(let i=0;i<shown&&i<lines.length;i++){const L=lines[i];const b=document.createElement('div');b.className='bubble '+L.who;b.innerHTML='<div class="who">'+(L.who==='them'?'Them':'You')+'</div><div class="en-row"><span>'+L.en+'</span><button class="mini-sound">🔊</button></div><div class="ru">'+L.ru+'</div>';b.querySelector('.mini-sound').onclick=()=>speak(L.en);dlg.appendChild(b);}const done=shown>=lines.length;document.getElementById('talk-next').textContent=done?'✅ Диалог завершён':'Next line ▸';}
-document.getElementById('talk-next').onclick=()=>{const len=TALK[scenario].lines.length;if(shown<len){shown++;renderTalk();const d=document.getElementById('dialogue');const last=d.lastChild;if(last&&last.querySelector){const L=TALK[scenario].lines[shown-1];if(L.who==='you')speak(L.en);}}};
-document.getElementById('talk-restart').onclick=()=>{shown=1;renderTalk();};
-buildTalkChips();
+function renderHome(){
+ const sp=TOPICS.filter(t=>t.side==='speaking'),wr=TOPICS.filter(t=>t.side==='writing');
+ const c=a=>a.reduce((s,t)=>s+t.cards.length,0);
+ $('m-sp').textContent=sp.length+' тем · '+c(sp)+' выражений · открыто '+sp.filter(unlocked).length;
+ $('m-wr').textContent=wr.length+' тем · '+c(wr)+' выражений · открыто '+wr.filter(unlocked).length;
+ $('streak').textContent='🔥 '+streak.count;
+}
+function renderTopics(){
+ $('tp-title').textContent=side==='speaking'?'🗣️ Speaking':'✍️ Writing';
+ $('tp-sub').textContent=side==='speaking'
+  ?'Живой язык: идиомы, фразовые глаголы, филлеры. Экзаменатор оценивает естественность — эти выражения работают в устной части и почти всегда вредят в эссе.'
+  :'Академический регистр: точные слова, вводные конструкции, официальные глаголы. Всё, что здесь, безопасно для Task 1 и Task 2.';
+ const list=$('tp-list');list.innerHTML='';
+ TOPICS.filter(t=>t.side===side).forEach(t=>{
+  const b=document.createElement('button');const ok=unlocked(t);
+  b.className='topic'+(ok?'':' locked');
+  const learnt=t.cards.filter(c=>known[t.id+'::'+c[0]]).length;
+  const pct=Math.round(learnt/t.cards.length*100);
+  b.innerHTML='<div class="tt">'+t.emoji+' '+t.title+'</div><div class="ts">'+t.cards.length+' выражений'+(ok?' · выучено '+learnt:'')+'</div>'+(ok?'<div class="bar"><i style="width:'+pct+'%"></i></div>':'')+(ok?'':'<span class="lk">🔒</span>');
+  b.onclick=()=>{if(!ok){openInvite();return;}openTopic(t);};
+  list.appendChild(b);});
+}
+function openTopic(t){topic=t;deck=t.cards;order=deck.map((_,i)=>i);pos=0;render();show('s-deck');}
 
-/* ---- mode switching ---- */
-function applyModeUI(){const talk=mode==='talk';document.getElementById('scene').style.display=talk?'none':'block';document.getElementById('row1').style.display=talk?'none':'flex';document.getElementById('row2').style.display=talk?'none':'flex';document.getElementById('talk').style.display=talk?'flex':'none';chipsWrap.style.display=(mode==='phrasal')?'flex':'none';document.getElementById('add').style.display=mode==='words'?'inline-block':'none';}
-document.querySelectorAll('.mode-btn').forEach(b=>{b.onclick=()=>{mode=b.dataset.mode;document.body.dataset.mode=mode;document.querySelectorAll('.mode-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');applyModeUI();if(mode==='talk'){renderTalk();}else{buildDeck();render();}};});
+/* ===== карточка ===== */
+function cur(){return deck[order[pos]];}
+function face(w){if(w==='front'){$('f-back').classList.remove('on');$('f-front').classList.add('on');}else{$('f-front').classList.remove('on');$('f-back').classList.add('on');}}
+function render(){stage=0;face('front');const c=cur();const isSp=topic.side==='speaking';
+ $('term').textContent=c[0];
+ const p=$('p-front');p.className='pill '+(isSp?'sp':'wr');p.textContent=isSp?'🗣️ Speaking':'✍️ Writing';
+ $('cnt').textContent=(pos+1)+'/'+deck.length;
+ const d=$('def');d.innerHTML='';c[1].split(/(\s+)/).forEach(tok=>{if(/^\s+$/.test(tok)){d.appendChild(document.createTextNode(tok));return;}const s=document.createElement('span');s.className='w';s.textContent=tok;s.onclick=e=>{e.stopPropagation();lookup(tok,s);};d.appendChild(s);});
+ $('ex').textContent=c[2]?'"'+c[2]+'"':'';
+ const n=$('nt');n.className='note '+(isSp?'sp':'wr');n.innerHTML='<b>'+(isSp?'Где использовать:':'Где использовать:')+'</b> '+c[4];
+ const rt=$('rt');rt.innerHTML='';(c[3]||'').split(',').map(s=>s.trim()).filter(Boolean).forEach(v=>{const s=document.createElement('span');s.textContent=v;rt.appendChild(s);});
+ $('tr').classList.remove('show');$('hb').textContent='👆 нажми ещё раз — перевод';
+ const k=$('known'),key=topic.id+'::'+c[0],is=!!known[key];k.classList.toggle('on',is);k.textContent=is?'✓ Знаю':'Знаю';
+ renderGoal();}
+function renderGoal(){const n=daily.ids.length;$('gf').style.width=Math.min(100,n/DAILY_GOAL*100)+'%';$('gf').classList.toggle('done',n>=DAILY_GOAL);$('gl').textContent=n+'/'+DAILY_GOAL+' сегодня';$('streak').textContent='🔥 '+streak.count;}
+function count(id){if(daily.ids.includes(id))return;daily.ids.push(id);store.set('v2.daily',daily);addXp(1);renderGoal();
+ if(daily.ids.length>=DAILY_GOAL&&!goalHit){goalHit=true;store.set('v2.goalHit',today());toast('🔥 Цель дня выполнена — '+DAILY_GOAL+' карточек!');}}
+function addXp(n){const b=xp;xp+=n;store.set('v2.xp',xp);const nw=SKINS.filter(s=>s.c>b&&s.c<=xp);if(nw.length)setTimeout(()=>toast('🎨 Открыт скин '+nw[nw.length-1].e+' '+nw[nw.length-1].n),450);}
+$('card').onclick=()=>{if(stage===0){stage=1;face('back');count(topic.id+'::'+cur()[0]);}else if(stage===1){stage=2;$('tr').classList.add('show');$('hb').textContent='✅ жми «Вперёд» для следующей';}};
+function speak(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-GB';u.rate=.9;speechSynthesis.speak(u);}catch(e){}}
+$('sb').onclick=e=>{e.stopPropagation();speak(cur()[0]);};
+$('p-sb').onclick=e=>{e.stopPropagation();speak($('pw').textContent);};
+$('next').onclick=()=>{pos=(pos+1)%deck.length;render();};
+$('prev').onclick=()=>{pos=(pos-1+deck.length)%deck.length;render();};
+$('shuf').onclick=()=>{for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=order[i];order[i]=order[j];order[j]=t;}pos=0;render();toast('🔀 Перемешано');};
+$('known').onclick=()=>{const k=topic.id+'::'+cur()[0];known[k]=!known[k];store.set('v2.known',known);render();};
 
-/* ---- controls ---- */
-document.getElementById('next').onclick=e=>{e.stopPropagation();pos=(pos+1)%deck.length;render();};
-document.getElementById('prev').onclick=e=>{e.stopPropagation();pos=(pos-1+deck.length)%deck.length;render();};
-document.getElementById('shuffle').onclick=()=>{for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}pos=0;render();};
-document.getElementById('known').onclick=()=>{const k=knownKey(current().w);known[k]=!known[k];store.set('vocab.known',known);render();};
-document.getElementById('add').onclick=()=>document.getElementById('form').classList.add('show');
-document.getElementById('f-cancel').onclick=()=>document.getElementById('form').classList.remove('show');
-document.getElementById('f-save').onclick=async()=>{const w=document.getElementById('f-word').value.trim().toLowerCase();const p=document.getElementById('f-pos').value.trim();let d=document.getElementById('f-def').value.trim();const ru=document.getElementById('f-ru').value.trim();if(!w)return;if(!d){try{const r=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(w));const j=await r.json();d=j[0].meanings[0].definitions[0].definition;}catch(e){d='(add a definition)';}}addCard(w,p,d,ru);document.getElementById('f-word').value=document.getElementById('f-pos').value=document.getElementById('f-def').value=document.getElementById('f-ru').value='';document.getElementById('form').classList.remove('show');};
-document.addEventListener('keydown',e=>{if(mode==='talk')return;if(e.key==='ArrowRight')document.getElementById('next').click();else if(e.key==='ArrowLeft')document.getElementById('prev').click();else if(e.key===' '){e.preventDefault();advanceStage();}});
+/* ===== словарь для тапа по слову ===== */
+const MINI={"something":"что-то","someone":"кто-то","very":"очень","clearly":"ясно","evidence":"доказательство","increase":"рост","decline":"спад","harmful":"вредный","widespread":"распространённый","amount":"количество","proportion":"доля","cause":"причина","reduce":"снижать","severity":"тяжесть","effect":"эффект","impact":"воздействие","gradual":"постепенный","continuous":"непрерывный","highest":"наивысший","point":"точка","irregularly":"нерегулярно","exceed":"превышать","margin":"разрыв","roughly":"примерно","period":"период","pattern":"закономерность","usually":"обычно","probable":"вероятный","possibly":"возможно","debatable":"спорный","partially":"частично","support":"поддержка","exists":"существует","general":"общий","terms":"термины","easier":"легче","gather":"собирать","time":"время","difficult":"трудный","tolerate":"терпеть","discover":"обнаружить","recover":"восстановиться","establish":"учредить","perform":"выполнять","task":"задача","relieve":"облегчать","tension":"напряжение","expensive":"дорогой","undecided":"нерешённый","uncontrollable":"неуправляемый","prompting":"побуждающий","change":"изменение","improvise":"импровизировать","final":"последний","problem":"проблема","tiny":"крошечный","compared":"по сравнению","needed":"нужный","deliberately":"намеренно","ignore":"игнорировать","suffer":"страдать","consequences":"последствия","decisive":"решающий","difference":"разница","current":"текущий","reality":"реальность","damage":"ущерб","course":"курс","leading":"ведущий","extended":"продлённый","extremely":"крайне","completely":"полностью","useless":"бесполезный","annoying":"раздражающий","almost":"почти","entirely":"целиком","stressful":"напряжённый","large":"большой","enough":"достаточно","important":"важный","considerable":"значительный","certain":"определённый","happen":"случиться","convincing":"убедительный","capable":"способный","working":"работающий","successfully":"успешно","unfavourable":"неблагоприятный","deep":"глубокий","intense":"интенсивный","small":"маленький","unimportant":"неважный","known":"известный","before":"раньше","likely":"вероятный","outcome":"результат","introducing":"вводящий","claim":"утверждение","adding":"добавляющий","second":"второй","explaining":"объясняющий","despite":"несмотря","given":"учитывая","arguing":"аргументирующий","favour":"польза","opposite":"противоположность","agreeing":"соглашающийся","result":"результат","contrast":"контраст","highlighting":"выделяющий","detail":"деталь","weighing":"взвешивание","everything":"всё","show":"показывать","clear":"ясный","weaken":"ослаблять","gradually":"постепенно","worse":"хуже","effect":"эффект","put":"класть","distribute":"распределять","purpose":"цель","form":"форма","gather":"собирать","become":"становиться","noticeable":"заметный","rise":"рост","stop":"останавливать","rising":"растущий","level":"уровень","fall":"падение","reach":"достигать","make":"делать","order":"порядок","mentioned":"упомянутый","during":"в течение","shown":"показанный","falling":"падающий","study":"учиться","hard":"трудно","feeling":"чувство","slightly":"слегка","ill":"больной"};
+let lit=null,lw='',ruOn=false;
+function localRu(w){if(MINI[w])return MINI[w];for(const[re,rep]of[[/ing$/,''],[/ed$/,''],[/s$/,''],[/ly$/,''],[/ies$/,'y']]){const b=w.replace(re,rep);if(b!==w&&MINI[b])return MINI[b];}return null;}
+async function lookup(raw,span){const w=raw.toLowerCase().replace(/[^a-z-]/g,'');if(!w)return;
+ if(w===lw&&$('panel').classList.contains('on')&&!ruOn){ru();return;}
+ lw=w;ruOn=false;if(lit)lit.classList.remove('lit');span.classList.add('lit');lit=span;
+ $('pw').textContent=w;$('pd').textContent='Ищу…';$('pr').style.display='none';$('panel').classList.add('on');
+ try{const r=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(w));if(!r.ok)throw 0;const j=await r.json();$('pd').textContent=j[0].meanings[0].definitions[0].definition;}
+ catch(e){const l=localRu(w);$('pd').textContent=l?'Определение доступно только онлайн — вот перевод:':'Нет данных, нужен интернет.';if(l)ru();}}
+async function ru(){if(ruOn)return;const p=$('pr');p.style.display='block';const l=localRu(lw);
+ if(l){p.textContent='🇷🇺 '+l;ruOn=true;return;}
+ p.textContent='Перевод…';
+ try{const r=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(lw)+'&langpair=en|ru');const j=await r.json();const t=j.responseData&&j.responseData.translatedText;if(!t||/NO QUERY|INVALID/i.test(t))throw 0;p.textContent='🇷🇺 '+t;}
+ catch(e){p.textContent='Перевод недоступен.';}
+ ruOn=true;}
+$('p-x').onclick=()=>{$('panel').classList.remove('on');if(lit)lit.classList.remove('lit');lw='';};
 
-buildDeck();render();applyModeUI();
-if(streakToast)setTimeout(()=>showToast(streakToast),700);
+/* ===== квиз ===== */
+const QN=8;let qs=[],qi=0,qright=0;
+function pick(a,n){const c=a.slice();for(let i=c.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=c[i];c[i]=c[j];c[j]=t;}return c.slice(0,n);}
+function buildQuiz(){
+ const pool=[];
+ /* тип 1: замени простое слово на C1 */
+ Object.keys(UPGRADE).forEach(base=>{
+  const good=UPGRADE[base].filter(x=>x[1]==='W'||x[1]==='B');
+  if(!good.length)return;
+  const right=good[Math.floor(Math.random()*good.length)];
+  const wrongPool=[];Object.keys(UPGRADE).forEach(o=>{if(o!==base)UPGRADE[o].forEach(x=>wrongPool.push(x[0]));});
+  pool.push({q:'Замени <em>'+base+'</em> на слово уровня C1 для эссе:',opts:[right[0]].concat(pick(wrongPool,3)),ans:right[0],ex:right[2]+(right[1]==='W'?' · только Writing':' · подходит везде')});});
+ /* тип 2: speaking или writing? */
+ TOPICS.forEach(t=>{t.cards.forEach(c=>{
+  pool.push({q:'Где уместно <em>'+c[0]+'</em>?',opts:['Только Speaking','Только Writing','И там, и там','Нигде на экзамене'],ans:t.side==='speaking'?'Только Speaking':'Только Writing',ex:c[4]});});});
+ /* тип 3: значение */
+ TOPICS.forEach(t=>{if(!unlocked(t))return;t.cards.forEach(c=>{
+  const wrong=[];TOPICS.forEach(o=>o.cards.forEach(x=>{if(x[0]!==c[0])wrong.push(x[1]);}));
+  pool.push({q:'Что значит <em>'+c[0]+'</em>?',opts:[c[1]].concat(pick(wrong,3)),ans:c[1],ex:c[2]?'Пример: '+c[2]:c[4]});});});
+ qs=pick(pool,QN).map(q=>({...q,opts:pick(q.opts,q.opts.length)}));
+ qi=0;qright=0;renderQ();}
+function renderQ(){const b=$('q-body');
+ if(qi>=qs.length){finishQuiz();return;}
+ const q=qs[qi];b.innerHTML='<div class="qbox"><div class="qmeta">Вопрос '+(qi+1)+' из '+qs.length+'</div><div class="qtext">'+q.q+'</div><div id="opts"></div><div id="fb"></div></div>';
+ const o=$('opts');
+ q.opts.forEach(t=>{const btn=document.createElement('button');btn.className='opt';btn.textContent=t;
+  btn.onclick=()=>{if(o.dataset.done)return;o.dataset.done='1';
+   const ok=t===q.ans;if(ok)qright++;
+   [...o.children].forEach(c=>{if(c.textContent===q.ans)c.classList.add('right');else if(c===btn)c.classList.add('wrong');});
+   $('fb').innerHTML='<div class="expl"><b>'+(ok?'✅ Верно.':'❌ Правильный ответ: '+q.ans)+'</b><br>'+q.ex+'</div><div class="row" style="margin-top:12px"><button class="b" id="qn" style="flex:1">Дальше ›</button></div>';
+   $('qn').onclick=()=>{qi++;renderQ();};};
+  o.appendChild(btn);});}
+function band(p){if(p>=0.95)return['8.5','Отличный C1 словарь. Готов к 8+'];if(p>=0.85)return['8.0','Сильный уровень. Мелкие пробелы'];if(p>=0.72)return['7.5','Хорошо. Дожми регистр Speaking/Writing'];if(p>=0.6)return['7.0','Целевой уровень близко'];if(p>=0.45)return['6.5','База есть, не хватает точности'];if(p>=0.3)return['6.0','Нужно больше академической лексики'];return['5.5','Начало пути — учи карточки'];}
+function finishQuiz(){const p=qright/qs.length;const[b,cap]=band(p);addXp(3);
+ $('q-body').innerHTML='<div class="qbox"><div class="band"><div class="num">'+b+'</div><div class="cap">примерный Lexical Resource</div></div><div class="expl" style="margin-top:14px"><b>'+qright+' из '+qs.length+' верно.</b> '+cap+'.<br><br>Это оценка <b>только словарного запаса</b>, а не всего IELTS. Реальный балл зависит ещё от беглости, грамматики и структуры ответа — их квизом не измерить.</div><div class="row" style="margin-top:14px"><button class="b gh" id="q-home" style="flex:1">На главную</button><button class="b" id="q-again" style="flex:1;background:linear-gradient(135deg,var(--purple),#FF9EC4);color:#fff;border-color:transparent;box-shadow:0 4px 0 var(--purple-dk)">Ещё раз</button></div></div>';
+ $('q-again').onclick=buildQuiz;$('q-home').onclick=()=>{renderHome();show('s-home');};}
+$('go-quiz').onclick=()=>{buildQuiz();show('s-quiz');};
+
+/* ===== апгрейд слова ===== */
+function upgrade(){const w=$('up-in').value.trim().toLowerCase();const out=$('up-out');out.innerHTML='';
+ if(!w)return;
+ const hit=UPGRADE[w];
+ if(!hit){const keys=Object.keys(UPGRADE).filter(k=>k.startsWith(w.slice(0,3)));
+  out.innerHTML='<div class="empty">Слова «'+w+'» пока нет в базе.<br>'+(keys.length?'Попробуй: <b>'+keys.slice(0,5).join(', ')+'</b>':'Есть, например: good, bad, big, important, show, cause, increase')+'</div>';return;}
+ addXp(1);
+ hit.forEach(([word,tag,ctx])=>{const d=document.createElement('div');d.className='up';
+  const lbl=tag==='S'?'🗣️ Speaking':tag==='W'?'✍️ Writing':'✓ Везде';
+  d.innerHTML='<div class="h"><span class="wd"></span><span class="tagm '+tag+'">'+lbl+'</span><button class="sbtn">🔊</button></div><div class="ct"></div>';
+  d.querySelector('.wd').textContent=word;d.querySelector('.ct').textContent=ctx;
+  d.querySelector('.sbtn').onclick=()=>speak(word);out.appendChild(d);});}
+$('up-go').onclick=upgrade;
+$('up-in').addEventListener('keydown',e=>{if(e.key==='Enter')upgrade();});
+$('go-up').onclick=()=>{show('s-up');setTimeout(()=>$('up-in').focus(),200);};
+
+/* ===== приглашения ===== */
+function myId(){try{if(TG&&TG.initDataUnsafe&&TG.initDataUnsafe.user)return TG.initDataUnsafe.user.id;}catch(e){}
+ let id=store.get('v2.uid',null);if(!id){id='u'+Math.random().toString(36).slice(2,9);store.set('v2.uid',id);}return id;}
+const BOT_USERNAME='vocab_Iggi2010_bot';   /* ← замени на @username своего бота без @ */
+function inviteLink(){return 'https://t.me/'+BOT_USERNAME+'?start=ref'+myId();}
+function openInvite(){
+ $('inv-sub').innerHTML='Закрыто тем: <b>'+lockedCount()+'</b>. Пригласи <b>'+FRIENDS_NEEDED+'</b> друзей, которые готовятся к IELTS — откроются все темы сразу.<br><br>Приглашено: <b>'+invites+' из '+FRIENDS_NEEDED+'</b>';
+ const p=$('inv-prog');p.innerHTML='';for(let i=0;i<FRIENDS_NEEDED;i++){const d=document.createElement('div');d.className='dot'+(i<invites?' on':'');p.appendChild(d);}
+ $('inv-link').textContent=inviteLink();$('ov-inv').classList.add('on');}
+$('go-inv').onclick=openInvite;
+$('inv-close').onclick=()=>$('ov-inv').classList.remove('on');
+$('inv-copy').onclick=()=>{const l=inviteLink();
+ try{if(TG&&TG.openTelegramLink){TG.openTelegramLink('https://t.me/share/url?url='+encodeURIComponent(l)+'&text='+encodeURIComponent('Готовлюсь к IELTS вот здесь — лексика отдельно для Speaking и Writing 👇'));return;}}catch(e){}
+ try{navigator.clipboard.writeText(l);toast('🔗 Ссылка скопирована');}catch(e){toast('Скопируй ссылку вручную');}};
+
+/* ===== скины ===== */
+function openSkins(){const g=$('sk-grid');g.innerHTML='';
+ $('sk-sub').textContent='✨ '+xp+' XP · открыто '+SKINS.filter(s=>xp>=s.c).length+' из '+SKINS.length;
+ const nx=SKINS.find(s=>s.c>xp);
+ if(nx){const pv=[...SKINS].reverse().find(s=>s.c<=xp);const base=pv?pv.c:0;$('xp-fill').style.width=Math.max(0,Math.min(100,(xp-base)/(nx.c-base)*100))+'%';$('sk-next').textContent='До «'+nx.n+'» '+nx.e+' — ещё '+(nx.c-xp)+' XP';}
+ else{$('xp-fill').style.width='100%';$('sk-next').textContent='🎉 Все скины открыты';}
+ SKINS.forEach(s=>{const ok=xp>=s.c;const d=document.createElement('div');d.className='sk'+(ok?'':' lk')+(s.id===skinId?' act':'');d.style.background=s.bg;
+  d.innerHTML='<div class="e">'+s.e+'</div><div class="n">'+s.n+'</div><div class="c">'+(ok?(s.c===0?'старт':'открыт'):s.c+' XP')+'</div>';
+  d.onclick=()=>{if(!ok){toast('🔒 Ещё '+(s.c-xp)+' XP');return;}applySkin(s.id);openSkins();};g.appendChild(d);});
+ $('ov-skin').classList.add('on');}
+$('skin-open').onclick=openSkins;
+$('sk-close').onclick=()=>$('ov-skin').classList.remove('on');
+
+let tt=null;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),3400);}
+
+renderHome();
+if(startToast)setTimeout(()=>toast(startToast),700);
 </script>
 </body>
 </html>
