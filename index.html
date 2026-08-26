@@ -103,6 +103,8 @@
  button.b:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
  .cnt{font-family:"Baloo 2";font-size:14px;color:var(--muted);font-weight:800;min-width:52px;text-align:center}
  .gh{background:rgba(255,255,255,.9);color:var(--muted)}
+ .selside{background:linear-gradient(135deg,var(--purple),#FF9EC4)!important;color:#fff!important;border-color:transparent!important;box-shadow:0 4px 0 var(--purple-dk)!important}
+ .delbtn{margin-top:10px;background:none;border:none;color:#D64545;font-family:"Baloo 2";font-weight:800;font-size:12px;text-decoration:underline;cursor:pointer;box-shadow:none;padding:0}
  .again{flex:1;border-color:#FFC9C9;color:#D64545;box-shadow:0 4px 0 #FFC9C9}
  .gotit{flex:1;background:var(--green);color:#fff;border-color:var(--green);box-shadow:0 4px 0 var(--green-dk)}
  .boxinfo{font-family:"Baloo 2";font-size:11.5px;color:var(--muted);font-weight:800;text-align:center;margin-bottom:8px}
@@ -160,6 +162,8 @@
   <button class="big sp" data-side="speaking"><div class="t">🗣️ Speaking</div><div class="d">Идиомы, фразовые глаголы, филлеры, усилители</div><div class="m" id="m-sp"></div></button>
   <button class="big wr" data-side="writing"><div class="t">✍️ Writing</div><div class="d">Академические слова, вводные конструкции, Task 1</div><div class="m" id="m-wr"></div></button>
   <button class="big t1" id="go-t1" data-side="task1"><div class="t">📊 Task 1: описание графиков</div><div class="d">Фразы для line, bar, pie, процессов и карт</div><div class="m" id="m-t1"></div></button>
+  <button class="tool" id="go-add">➕ Добавить своё слово<span>Вручную или с автозаполнением определения и перевода</span></button>
+  <button class="tool" id="go-custom">⭐ Мои слова<span id="custom-count">Пока пусто</span></button>
   <button class="tool" id="go-quiz">🧠 Проверить себя<span>Квиз на 10 вопросов по выученному</span></button>
   <button class="tool" id="go-up">🔎 Апгрейд слова<span>Введи good, bad, important — получи C1-замены</span></button>
  </div>
@@ -193,6 +197,14 @@
 </div>
 
 <div class="panel" id="panel"><button class="x" id="p-x">×</button><div style="display:flex;align-items:center;gap:9px"><span class="pw" id="pw"></span><button class="sb" id="p-sb" style="width:36px;height:36px;font-size:15px">🔊</button></div><div class="pd" id="pd"></div><div class="pr" id="pr"></div></div>
+<div class="ov" id="ov-add"><div class="box"><h3>➕ Своё слово</h3><div class="sub">Оставь определение и перевод пустыми — попробуем найти сами.</div>
+<div class="search" style="margin-bottom:10px"><input id="aw-word" placeholder="слово или выражение" autocomplete="off" autocapitalize="off"></div>
+<div class="row" style="margin:0 0 10px;max-width:100%"><button class="b" id="aw-side-sp" style="flex:1">🗣️ Speaking</button><button class="b" id="aw-side-wr" style="flex:1">✍️ Writing</button></div>
+<div class="search" style="margin-bottom:10px"><input id="aw-def" placeholder="определение (можно пусто — найдём сами)" autocomplete="off"></div>
+<div class="search" style="margin-bottom:10px"><input id="aw-ex" placeholder="пример (необязательно)" autocomplete="off"></div>
+<div class="search" style="margin-bottom:10px"><input id="aw-ru" placeholder="перевод (можно пусто)" autocomplete="off"></div>
+<div class="row" style="margin:0"><button class="b gh" id="aw-cancel" style="flex:1">Отмена</button><button class="b" id="aw-save" style="flex:2;background:linear-gradient(135deg,var(--purple),#FF9EC4);color:#fff;border-color:transparent;box-shadow:0 4px 0 var(--purple-dk)">Сохранить</button></div>
+</div></div>
 <div class="ov" id="ov-stat"><div class="box"><h3>📈 Прогресс</h3><div id="stat-body"></div><div class="row" style="margin:14px 0 0"><button class="b gh" id="stat-close" style="flex:1">Закрыть</button></div></div></div>
 <div class="toast" id="toast"></div>
 <script>
@@ -405,7 +417,103 @@ const TOPICS=[
 ["a contributing factor","one cause among several","Diet is a contributing factor.","один из факторов","Writing. Честнее, чем the cause."],
 ["to some degree","partially","This is true to some degree.","в некоторой степени","Writing Task 2."],
 ["there is some evidence that","partial support exists","There is some evidence that it helps.","есть некоторые свидетельства","Writing. Академически корректно."],
-["broadly speaking","in general terms","Broadly speaking, the pattern holds.","в общих чертах","Writing."]]}
+["broadly speaking","in general terms","Broadly speaking, the pattern holds.","в общих чертах","Writing."]]},
+
+{id:"col-vn",side:"writing",emoji:"🧩",title:"Коллокации: глагол + существительное",cards:[
+["make a decision","to decide something","The board made a decision to expand.","принять решение","Writing. НЕ 'do a decision' — частая ошибка."],
+["draw a conclusion","to reach a conclusion from evidence","We can draw a conclusion from the data.","сделать вывод","Writing Task 2, для заключения."],
+["raise awareness","to make people more aware of an issue","Campaigns raise awareness of climate change.","повышать осведомлённость","Writing Task 2, темы про общество."],
+["pose a threat/risk","to be a danger","Pollution poses a serious threat to health.","представлять угрозу","Writing. Сильная академическая связка."],
+["play a role/part","to be a contributing factor","Diet plays a major role in health.","играть роль","Writing Task 2, очень частое."],
+["have an effect/impact on","to influence something","Social media has a huge impact on teenagers.","оказывать влияние на","Writing. НЕ 'make an impact', именно have."],
+["reach a consensus","to arrive at general agreement","Experts reached a consensus on the issue.","прийти к консенсусу","Writing Task 2, про спорные темы."],
+["meet a need/demand","to satisfy a requirement","Schools must meet the needs of all students.","удовлетворять потребность","Writing."],
+["achieve a goal/objective","to accomplish something","The policy achieved its objective.","достичь цели","Writing."],
+["address an issue/problem","to deal with something","The government must address this issue.","заниматься проблемой","Writing. Формальнее, чем solve."],
+["carry out research/a study","to perform an investigation","Researchers carried out a study on sleep.","проводить исследование","Writing. НЕ 'make a research'."],
+["impose a restriction/ban","to enforce a rule","The city imposed a ban on plastic bags.","ввести запрет","Writing Task 2, про законы."],
+["generate income/employment","to produce economic benefit","Tourism generates significant income.","генерировать доход","Writing."],
+["acquire a skill","to learn an ability","Children acquire language skills early.","приобретать навык","Writing."]]},
+
+{id:"col-an",side:"writing",emoji:"🎯",title:"Коллокации: прилагательное + существительное",cards:[
+["significant impact","a large, meaningful effect","The policy had a significant impact.","значительное влияние","Writing. Сильнее, чем big impact."],
+["widespread concern","worry shared by many people","There is widespread concern about pollution.","широко распространённая озабоченность","Writing Task 2."],
+["strong evidence","convincing proof","There is strong evidence for this theory.","веское доказательство","Writing. НЕ powerful evidence."],
+["growing demand","an increasing need for something","There is growing demand for renewable energy.","растущий спрос","Writing Task 1 и 2."],
+["heavy traffic","a large volume of vehicles","Heavy traffic causes delays.","интенсивное движение","Writing. НЕ strong traffic."],
+["rapid growth","fast increase","The city saw rapid growth in population.","стремительный рост","Writing Task 1."],
+["sustainable development","growth that doesn't harm the future","Sustainable development is a global goal.","устойчивое развитие","Writing. Фиксированное академическое словосочетание."],
+["adverse effect","a harmful consequence","Stress has an adverse effect on health.","неблагоприятный эффект","Writing."],
+["vital role","an essential function","Education plays a vital role in society.","жизненно важная роль","Writing."],
+["considerable amount","a large quantity","A considerable amount of money was spent.","значительное количество","Writing Task 1 и 2."],
+["long-term consequences","effects lasting far into the future","The decision had long-term consequences.","долгосрочные последствия","Writing Task 2."],
+["immediate action","action taken without delay","The crisis requires immediate action.","незамедлительные действия","Writing Task 2."],
+["underlying cause","the real, often hidden reason","The underlying cause remains unclear.","глубинная причина","Writing."],
+["valuable insight","useful understanding","The survey provided valuable insight.","ценное понимание","Writing."]]},
+
+{id:"col-adv",side:"writing",emoji:"⚡",title:"Коллокации: усилители (наречие+прил.)",cards:[
+["highly effective","very successful at achieving results","The treatment is highly effective.","весьма эффективный","Writing. Академичнее, чем very effective."],
+["deeply concerned","very worried","Scientists are deeply concerned about the trend.","глубоко обеспокоен","Writing."],
+["increasingly common","becoming more frequent over time","This practice is increasingly common.","всё более распространённый","Writing Task 2."],
+["widely accepted","believed by most people","This theory is widely accepted.","широко принятый","Writing."],
+["strictly regulated","controlled by firm rules","The industry is strictly regulated.","строго регулируемый","Writing."],
+["closely linked/related","strongly connected","Diet is closely linked to health.","тесно связан","Writing."],
+["readily available","easy to obtain","Information is readily available online.","легко доступный","Writing."],
+["particularly important","especially significant","This is particularly important for young people.","особенно важный","Writing."],
+["heavily dependent","relying strongly on something","The economy is heavily dependent on oil.","сильно зависим","Writing."],
+["rapidly changing","transforming quickly","We live in a rapidly changing world.","стремительно меняющийся","Writing."],
+["seriously affected","badly impacted","Coastal areas are seriously affected by flooding.","серьёзно пострадавший","Writing."],
+["fully aware","completely conscious of something","Consumers should be fully aware of the risks.","полностью осведомлён","Writing."],
+["largely responsible","mostly the cause of","Human activity is largely responsible for the change.","в значительной степени ответственен","Writing."],
+["commonly used","frequently applied","This method is commonly used in research.","широко используемый","Writing."]]},
+
+{id:"col-link",side:"writing",emoji:"🔗",title:"Коллокации: обороты с предлогами",cards:[
+["in light of","considering something new","In light of recent events, policy changed.","в свете (событий)","Writing Task 2, вводит новую информацию."],
+["with regard to","concerning, about","With regard to funding, more is needed.","что касается","Writing. Формально."],
+["in the context of","within a particular situation","In the context of climate change, this matters.","в контексте","Writing Task 2."],
+["on the grounds that","for the reason that","The proposal was rejected on the grounds that it was costly.","на том основании, что","Writing, для аргументации."],
+["for the purpose of","with the aim of","The data was collected for the purpose of analysis.","с целью","Writing."],
+["in an attempt to","trying to","In an attempt to reduce costs, they cut staff.","в попытке","Writing."],
+["as a consequence of","because of, resulting from","As a consequence of the policy, prices rose.","вследствие","Writing. Сильнее, чем because of."],
+["in accordance with","following a rule or law","The changes were made in accordance with the law.","в соответствии с","Writing."],
+["at the expense of","causing harm to something else","Growth came at the expense of the environment.","за счёт, в ущерб","Writing Task 2, для критики."],
+["in the wake of","as a result of, following","In the wake of the scandal, reforms followed.","вслед за","Writing."],
+["with a view to","with the intention of","The plan was designed with a view to reducing waste.","с целью","Writing."],
+["on account of","because of","The event was cancelled on account of weather.","по причине","Writing."],
+["in the face of","despite, when confronted with","In the face of criticism, the policy remained.","перед лицом","Writing Task 2."],
+["irrespective of","regardless of","The rule applies irrespective of age.","независимо от","Writing."]]},
+
+{id:"col-sp1",side:"speaking",emoji:"🗨️",title:"Коллокации: разговорные",cards:[
+["make a mistake","to do something wrong","Everyone makes mistakes.","совершить ошибку","Speaking + Writing. Базовая, но частая."],
+["take a break","to rest for a while","Let's take a break.","сделать перерыв","Speaking."],
+["have a chat","to talk casually","We had a quick chat.","поболтать","Только Speaking, неформально."],
+["get a chance","to have an opportunity","I finally got a chance to visit.","получить шанс","Speaking. В Writing — have the opportunity."],
+["give it a try","to attempt something","I'll give it a try.","попробовать","Speaking. В Writing — attempt it."],
+["keep in touch","to stay in contact","Let's keep in touch.","поддерживать связь","Speaking."],
+["lose track of time","to not notice how much time has passed","I lost track of time.","потерять счёт времени","Speaking Part 2."],
+["make plans","to plan for the future","We're making plans for the weekend.","строить планы","Speaking."],
+["change your mind","to decide differently than before","I changed my mind about it.","передумать","Speaking."],
+["take your time","to not hurry","Take your time, no rush.","не торопиться","Только Speaking."],
+["get in touch","to contact someone","I'll get in touch tomorrow.","связаться","Speaking. В Writing — contact."],
+["make sense","to be logical or understandable","That makes sense to me.","иметь смысл","Speaking."],
+["do your best","to try as hard as possible","Just do your best.","стараться изо всех сил","Speaking."],
+["take it easy","to relax, not to worry","Take it easy this weekend.","расслабиться","Только Speaking."]]},
+
+{id:"col-sp2",side:"speaking",emoji:"😳",title:"Коллокации: эмоции и реакции",cards:[
+["burst into tears","to suddenly start crying","She burst into tears.","расплакаться","Speaking Part 2, рассказ о ситуации."],
+["burst out laughing","to suddenly start laughing","We burst out laughing.","расхохотаться","Speaking Part 2."],
+["lose your temper","to suddenly become very angry","He lost his temper.","выйти из себя","Speaking."],
+["keep your cool","to stay calm under pressure","Try to keep your cool.","сохранять спокойствие","Speaking."],
+["get on someone's nerves","to annoy someone","It really gets on my nerves.","действовать на нервы","Только Speaking, разговорно."],
+["be over the moon","to be extremely happy","She was over the moon about the news.","быть на седьмом небе","Speaking."],
+["be in a good/bad mood","to feel positive/negative","He's in a bad mood today.","быть в хорошем/плохом настроении","Speaking Part 1."],
+["jump for joy","to be very excited and happy","The kids jumped for joy.","прыгать от радости","Speaking Part 2."],
+["be at a loss for words","to not know what to say","I was at a loss for words.","лишиться дара речи","Speaking Part 2."],
+["hold a grudge","to stay angry at someone for a long time","She still holds a grudge.","затаить обиду","Speaking Part 3."],
+["take offence","to feel hurt or insulted","Don't take offence, I mean it kindly.","обидеться","Speaking."],
+["break down in tears","to start crying, often after holding it in","He broke down in tears.","разрыдаться","Speaking Part 2."],
+["be on cloud nine","to feel extremely happy","I've been on cloud nine since the news.","быть на седьмом небе","Speaking, синоним over the moon."]]}
+
 ];
 
 /* ============ TASK 1: банк фраз по типам графиков ============ */
@@ -535,8 +643,14 @@ let startToast='';
 
 /* ---- индекс всех карточек ---- */
 const T1TOPICS=TASK1.map(t=>({...t,side:'task1'}));
-const ALLTOPICS=TOPICS.concat(T1TOPICS);
-const ALL=[];ALLTOPICS.forEach(t=>t.cards.forEach(c=>ALL.push({t:t,c:c,k:t.id+'::'+c[0]})));
+let custom=store.get('v3.custom',{speaking:[],writing:[]});
+let ALLTOPICS=[],ALL=[];
+function customTopics(){const out=[];
+ if(custom.speaking.length)out.push({id:'custom-speaking',side:'speaking',emoji:'⭐',title:'Мои слова',cards:custom.speaking});
+ if(custom.writing.length)out.push({id:'custom-writing',side:'writing',emoji:'⭐',title:'Мои слова',cards:custom.writing});
+ return out;}
+function buildAll(){ALLTOPICS=TOPICS.concat(T1TOPICS).concat(customTopics());ALL=[];ALLTOPICS.forEach(t=>t.cards.forEach(c=>ALL.push({t:t,c:c,k:t.id+'::'+c[0]})));}
+buildAll();
 function st(k){return srs[k]||{b:0,d:0};}
 function isDue(k){const s=srs[k];return !s||s.d<=dayNum();}
 function isNew(k){return !srs[k];}
@@ -557,11 +671,13 @@ $('deck-back').onclick=()=>{if(backTo==='s-home')renderHome();else renderTopics(
 document.querySelectorAll('.big').forEach(b=>b.onclick=()=>{side=b.dataset.side;document.body.dataset.side=side;renderTopics();show('s-topics');});
 
 function renderHome(){
- const sp=TOPICS.filter(t=>t.side==='speaking'),wr=TOPICS.filter(t=>t.side==='writing');
+ const sp=ALLTOPICS.filter(t=>t.side==='speaking'&&t.id!=='custom-speaking'),wr=ALLTOPICS.filter(t=>t.side==='writing'&&t.id!=='custom-writing');
  const cnt=a=>a.reduce((s,t)=>s+t.cards.length,0);
  const lrn=a=>a.reduce((s,t)=>s+t.cards.filter(c=>st(t.id+'::'+c[0]).b>=3).length,0);
  $('m-sp').textContent=sp.length+' тем · '+cnt(sp)+' выражений · усвоено '+lrn(sp);
  $('m-wr').textContent=wr.length+' тем · '+cnt(wr)+' выражений · усвоено '+lrn(wr);
+ const ccount=custom.speaking.length+custom.writing.length;
+ $('custom-count').textContent=ccount?ccount+' '+(ccount===1?'слово':ccount<5?'слова':'слов')+' добавлено':'Пока пусто — добавь первое';
  const t1c=TASK1.reduce((s,t)=>s+t.cards.length,0);
  const t1l=TASK1.reduce((s,t)=>s+t.cards.filter(c=>st(t.id+'::'+c[0]).b>=3).length,0);
  $('m-t1').textContent=TASK1.length+' блоков · '+t1c+' фраз · усвоено '+t1l;
@@ -605,6 +721,9 @@ function render(){
  const d=$('def');d.innerHTML='';c[1].split(/(\s+)/).forEach(tok=>{if(/^\s+$/.test(tok)){d.appendChild(document.createTextNode(tok));return;}const s=document.createElement('span');s.className='w';s.textContent=tok;s.onclick=e=>{e.stopPropagation();lookup(tok,s);};d.appendChild(s);});
  $('ex').textContent=c[2]?'"'+c[2]+'"':'';
  const n=$('nt');n.className='note '+(x.t.side==='speaking'?'sp':'wr');n.innerHTML='<b>Как применять:</b> '+c[4];
+ const isCustom=x.t.id&&x.t.id.startsWith('custom-');
+ let delBtn=document.getElementById('del-custom');if(delBtn)delBtn.remove();
+ if(isCustom){const db=document.createElement('button');db.id='del-custom';db.className='delbtn';db.textContent='🗑 Удалить это слово';db.onclick=(e)=>{e.stopPropagation();deleteCustom(x);};n.parentNode.appendChild(db);}
  const rt=$('rt');rt.innerHTML='';(c[3]||'').split(',').map(s=>s.trim()).filter(Boolean).forEach(v=>{const s=document.createElement('span');s.textContent=v;rt.appendChild(s);});
  $('tr').classList.remove('show');$('hb').textContent='👆 ещё раз — перевод';
  const s=st(x.k);
@@ -715,6 +834,32 @@ $('stat-open').onclick=()=>{
  h+='<div style="margin-top:14px;font-size:12.5px;color:var(--muted);line-height:1.5">Каждое «✓ Помню» поднимает слово на уровень выше, и оно возвращается позже: через 1, 3, 7, 16, затем 35 дней. «↺ Ещё раз» сбрасывает на начало. Так забытое всплывает чаще, а выученное не мозолит глаза.</div>';
  $('stat-body').innerHTML=h;$('ov-stat').classList.add('on');};
 $('stat-close').onclick=()=>$('ov-stat').classList.remove('on');
+
+function deleteCustom(x){const side=x.t.side;const arr=custom[side];const idx=arr.findIndex(c=>c[0]===x.c[0]);if(idx>-1){arr.splice(idx,1);store.set('v3.custom',custom);delete srs[x.k];store.set('v3.srs',srs);buildAll();toast('Удалено: '+x.c[0]);renderHome();show('s-home');}}
+
+/* ---- добавление своего слова ---- */
+let awSide='speaking';
+function setAwSide(s){awSide=s;$('aw-side-sp').classList.toggle('selside',s==='speaking');$('aw-side-wr').classList.toggle('selside',s==='writing');}
+$('go-add').onclick=()=>{$('aw-word').value='';$('aw-def').value='';$('aw-ex').value='';$('aw-ru').value='';setAwSide('speaking');$('ov-add').classList.add('on');setTimeout(()=>$('aw-word').focus(),150);};
+$('aw-side-sp').onclick=()=>setAwSide('speaking');
+$('aw-side-wr').onclick=()=>setAwSide('writing');
+$('aw-cancel').onclick=()=>$('ov-add').classList.remove('on');
+async function fetchDefFor(word){try{const r=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(word));if(!r.ok)throw 0;const j=await r.json();return j[0].meanings[0].definitions[0].definition;}catch(e){return null;}}
+async function fetchRuFor(word){const l=localRu(word.toLowerCase());if(l)return l;
+ try{const r=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(word)+'&langpair=en|ru');const j=await r.json();const t=j.responseData&&j.responseData.translatedText;if(!t||/NO QUERY|INVALID/i.test(t))throw 0;return t;}catch(e){return null;}}
+$('aw-save').onclick=async()=>{
+ const word=$('aw-word').value.trim();if(!word){toast('Введи слово или выражение');return;}
+ let def=$('aw-def').value.trim(),ex=$('aw-ex').value.trim(),ru=$('aw-ru').value.trim();
+ $('aw-save').textContent='Ищу…';$('aw-save').disabled=true;
+ if(!def){const f=await fetchDefFor(word);def=f||'(добавь определение самостоятельно)';}
+ if(!ru){const f=await fetchRuFor(word);ru=f||'';}
+ $('aw-save').textContent='Сохранить';$('aw-save').disabled=false;
+ const note=awSide==='speaking'?'Добавлено тобой — используй в устной речи.':'Добавлено тобой — используй в письменной речи.';
+ custom[awSide].push([word,def,ex,ru,note]);store.set('v3.custom',custom);
+ buildAll();$('ov-add').classList.remove('on');toast('✅ Добавлено: '+word);renderHome();};
+$('go-custom').onclick=()=>{const items=custom.speaking.concat(custom.writing);if(!items.length){toast('Пока нет своих слов — добавь первое');return;}
+ const ct=customTopics();deck=[];ct.forEach(t=>t.cards.forEach(c=>deck.push({t:t,c:c,k:t.id+'::'+c[0]})));
+ mode='topic';topic=null;pos=0;backTo='s-home';document.body.dataset.side=deck[0].t.side;render();show('s-deck');};
 
 let tt=null;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),3400);}
 renderHome();
