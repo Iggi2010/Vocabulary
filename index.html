@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>C1 Vocab</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+<!-- ============ АНАЛИТИКА UMAMI ============
+     Замени YOUR-WEBSITE-ID-HERE на ID сайта из панели Umami.
+     Если оставить как есть — приложение работает, статистика просто не собирается.
+     Umami не ставит cookies и не собирает персональные данные.
+     Твои добавленные слова и прогресс НИКУДА не отправляются — они остаются на устройстве. -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR-WEBSITE-ID-HERE"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -104,6 +111,79 @@
  .cnt{font-family:"Baloo 2";font-size:14px;color:var(--muted);font-weight:800;min-width:52px;text-align:center}
  .gh{background:rgba(255,255,255,.9);color:var(--muted)}
  .selside{background:linear-gradient(135deg,var(--purple),#FF9EC4)!important;color:#fff!important;border-color:transparent!important;box-shadow:0 4px 0 var(--purple-dk)!important}
+ .awstat{font-size:12px;font-weight:700;color:var(--muted);margin-bottom:12px;min-height:17px;line-height:1.4}
+ .awstat.ok{color:var(--green-dk)}
+ .awstat.warn{color:#C98A00}
+ .awstat.err{color:#D64545}
+ .prev{background:#F7F8FC;border:2px solid var(--line);border-radius:16px;padding:13px 15px;margin-bottom:10px}
+ .prev-w{font-family:"Baloo 2";font-weight:800;font-size:18px;word-break:break-word}
+ .prev-d{font-size:13.5px;line-height:1.45;margin-top:5px;color:#5A5A70}
+ .prev-r{font-size:14px;font-weight:700;color:var(--purple-dk);margin-top:7px}
+ .editlink{background:none;border:none;box-shadow:none;padding:4px 0;font-family:"Baloo 2";font-weight:800;font-size:12.5px;color:var(--purple-dk);cursor:pointer;text-decoration:underline}
+ .flab{font-family:"Baloo 2";font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:10px 0 4px}
+ .fsrc{font-family:"Nunito";text-transform:none;letter-spacing:0;font-size:11px;font-weight:700}
+ .fsrc.ok{color:var(--green-dk)}.fsrc.no{color:#C98A00}
+ #aw-fields textarea,#aw-fields input,#aw-batch textarea{width:100%;font-size:15px;border:2px solid var(--line);border-radius:14px;padding:11px 13px;background:#fff;font-family:"Nunito";resize:vertical}
+ #aw-fields textarea{min-height:62px}
+ #aw-fields textarea:focus,#aw-fields input:focus,#aw-batch textarea:focus{outline:none;border-color:var(--purple)}
+ .brow{display:flex;align-items:center;gap:8px;background:#fff;border:2px solid var(--line);border-radius:13px;padding:9px 11px;margin-top:7px;font-size:13px}
+ .brow .bw{font-weight:800;flex:1;word-break:break-word}
+ .brow .bs{font-size:15px}
+ .brow .bx{background:none;border:none;box-shadow:none;color:#D64545;font-size:15px;padding:0 2px;cursor:pointer}
+ /* toggles */
+ .dtog{display:flex;gap:6px;margin-bottom:10px}
+ .tg{flex:1;font-family:"Baloo 2";font-size:11.5px;font-weight:800;padding:9px 4px;border-radius:13px;border:2px solid var(--line);background:#fff;color:var(--muted);box-shadow:none;cursor:pointer}
+ .tg.on{background:var(--purple);color:#fff;border-color:var(--purple)}
+ .exrow{display:flex;align-items:flex-start;gap:8px;margin-top:9px}
+ .exrow .ex{flex:1;margin-top:0}
+ .sb-sm{width:32px;height:32px;font-size:14px;box-shadow:0 2px 5px rgba(0,0,0,.1)}
+ .gap{display:inline-block;min-width:78px;border-bottom:3px solid rgba(90,90,112,.45);margin:0 3px}
+ .ctxq{font-family:"Baloo 2";font-weight:800;font-size:clamp(17px,4.6vw,21px);line-height:1.4;margin:auto 0 6px}
+ .ctxlab{font-family:"Baloo 2";font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:rgba(80,80,105,.6);margin-bottom:6px}
+ .bigplay{width:78px;height:78px;border-radius:50%;border:none;background:rgba(255,255,255,.8);font-size:32px;cursor:pointer;box-shadow:0 5px 14px rgba(0,0,0,.15);margin:auto auto 8px;display:block}
+ /* essay */
+ #es-in{width:100%;min-height:190px;font-size:15px;line-height:1.5;border:2px solid var(--line);border-radius:16px;padding:13px 15px;background:#fff;font-family:"Nunito";resize:vertical}
+ #es-in:focus{outline:none;border-color:var(--wr)}
+ .find{background:#fff;border-radius:16px;padding:13px 15px;margin-bottom:9px;border:2px solid var(--line);border-left-width:6px}
+ .find.bad{border-left-color:#E8564A}
+ .find.warn{border-left-color:var(--gold)}
+ .find.ok{border-left-color:var(--green)}
+ .find .ft{font-family:"Baloo 2";font-weight:800;font-size:14.5px}
+ .find .fd{font-size:13px;line-height:1.5;color:#5A5A70;margin-top:5px}
+ .find .fd b{color:var(--ink)}
+ .chipx{display:inline-block;background:#FFEFEF;color:#C23B30;font-weight:700;font-size:12.5px;padding:3px 9px;border-radius:9px;margin:3px 4px 0 0}
+ .chipy{display:inline-block;background:#FFF6DC;color:#9A7000;font-weight:700;font-size:12.5px;padding:3px 9px;border-radius:9px;margin:3px 4px 0 0}
+ .chipg{display:inline-block;background:#EAF9DC;color:var(--green-dk);font-weight:700;font-size:12.5px;padding:3px 9px;border-radius:9px;margin:3px 4px 0 0}
+ /* dashboard */
+ .kpis{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}
+ .kpi{background:#fff;border-radius:16px;padding:13px;border:2px solid var(--line)}
+ .kpi .n{font-family:"Baloo 2";font-weight:800;font-size:25px;line-height:1}
+ .kpi .l{font-size:11.5px;color:var(--muted);font-weight:700;margin-top:3px;line-height:1.3}
+ .panelbox{background:#fff;border-radius:18px;padding:15px;margin-bottom:12px;border:2px solid var(--line)}
+ .ph{font-family:"Baloo 2";font-weight:800;font-size:14.5px;margin-bottom:11px}
+ .phint2{font-size:11px;color:var(--muted);margin-top:9px;line-height:1.4}
+ .heat{display:grid;grid-template-columns:repeat(8,1fr);gap:4px}
+ .hc{display:block;width:100%;aspect-ratio:1;border-radius:4px;background:#EFEFF6}
+ .hc.h1{background:#CDEFAE}.hc.h2{background:#9BDF6E}.hc.h3{background:#6FD02F}.hc.h4{background:var(--green-dk)}
+ .hleg{display:flex;align-items:center;gap:4px;margin-top:9px;font-size:10.5px;color:var(--muted);font-weight:700}
+ .hleg .hc{width:12px;height:12px;aspect-ratio:auto}
+ .brow2{display:flex;align-items:center;gap:9px;margin-bottom:8px;font-size:12.5px}
+ .brow2 .bl{width:64px;font-weight:700;color:var(--muted);flex-shrink:0}
+ .brow2 .bt{flex:1;height:16px;background:#F1F1F8;border-radius:8px;overflow:hidden}
+ .brow2 .bt i{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,#9BDF6E,var(--green))}
+ .brow2 .bn{width:30px;text-align:right;font-weight:800;font-family:"Baloo 2"}
+ .trow{margin-bottom:10px}
+ .trow .tl{display:flex;justify-content:space-between;font-size:12.5px;font-weight:700;margin-bottom:4px}
+ .trow .tl span:last-child{color:var(--muted)}
+ /* skins */
+ .xpb{height:12px;background:#EFEFF6;border-radius:10px;padding:2px;margin:6px 0}
+ .xpb i{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,var(--purple),#FF9EC4);transition:width .5s}
+ .skgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+ .sk{border-radius:16px;padding:14px 8px;text-align:center;cursor:pointer;border:3px solid transparent;position:relative}
+ .sk .e{font-size:26px}.sk .n{font-family:"Baloo 2";font-weight:800;font-size:13px;margin-top:2px}
+ .sk .c{font-size:10.5px;font-weight:700;color:#7A7A8C;margin-top:2px}
+ .sk.lk{filter:grayscale(.75);opacity:.6}
+ .sk.act{border-color:var(--purple-dk);box-shadow:0 4px 0 var(--purple-dk)}
  .delbtn{margin-top:10px;background:none;border:none;color:#D64545;font-family:"Baloo 2";font-weight:800;font-size:12px;text-decoration:underline;cursor:pointer;box-shadow:none;padding:0}
  .again{flex:1;border-color:#FFC9C9;color:#D64545;box-shadow:0 4px 0 #FFC9C9}
  .gotit{flex:1;background:var(--green);color:#fff;border-color:var(--green);box-shadow:0 4px 0 var(--green-dk)}
@@ -153,7 +233,7 @@
 </head>
 <body>
 <div class="wrap">
- <div class="top"><span class="logo">🦉 C1 Vocab</span><button class="ib" id="stat-open">📈</button><span class="streak" id="streak"></span></div>
+ <div class="top"><span class="logo">🦉 C1 Vocab</span><button class="ib" id="skin-open">🎨</button><button class="ib" id="stat-open">📈</button><span class="streak" id="streak"></span></div>
 
  <div class="screen on" id="s-home">
   <div class="wod" id="wod"></div>
@@ -164,6 +244,7 @@
   <button class="big t1" id="go-t1" data-side="task1"><div class="t">📊 Task 1: описание графиков</div><div class="d">Фразы для line, bar, pie, процессов и карт</div><div class="m" id="m-t1"></div></button>
   <button class="tool" id="go-add">➕ Добавить своё слово<span>Вручную или с автозаполнением определения и перевода</span></button>
   <button class="tool" id="go-custom">⭐ Мои слова<span id="custom-count">Пока пусто</span></button>
+  <button class="tool" id="go-essay">📝 Проверить эссе<span>Найдёт разговорные выражения, простые слова и повторы</span></button>
   <button class="tool" id="go-quiz">🧠 Проверить себя<span>Квиз на 10 вопросов по выученному</span></button>
   <button class="tool" id="go-up">🔎 Апгрейд слова<span>Введи good, bad, important — получи C1-замены</span></button>
  </div>
@@ -177,16 +258,35 @@
  <div class="screen" id="s-deck">
   <button class="back-btn" id="deck-back">‹ Назад</button>
   <div class="goal"><div class="gt"><div class="gf" id="gf"></div></div><span class="gl" id="gl"></span></div>
+  <div class="dtog"><button class="tg" id="tg-ctx">📖 Контекст</button><button class="tg" id="tg-audio">🔊 Авто-звук</button><button class="tg" id="tg-listen">🎧 Аудирование</button></div>
   <div class="boxinfo" id="boxinfo"></div>
   <div class="card" id="card">
    <div class="face front on" id="f-front"><span class="pill" id="p-front"></span><div class="wrow"><span class="term" id="term"></span><button class="sb" id="sb">🔊</button></div><div class="hint">👆 нажми, чтобы открыть значение</div></div>
-   <div class="face back" id="f-back"><span class="lab">Meaning</span><div class="def" id="def"></div><div class="ex" id="ex"></div><div class="note" id="nt"></div><div class="tr" id="tr"><span class="lab" style="color:var(--purple-dk)">🇷🇺 Перевод</span><div class="rt" id="rt"></div></div><div class="hint" id="hb">👆 ещё раз — перевод</div></div>
+   <div class="face back" id="f-back"><span class="lab">Meaning</span><div class="def" id="def"></div><div class="exrow"><div class="ex" id="ex"></div><button class="sb sb-sm" id="sb-ex">🔊</button></div><div class="note" id="nt"></div><div class="tr" id="tr"><span class="lab" style="color:var(--purple-dk)">🇷🇺 Перевод</span><div class="rt" id="rt"></div></div><div class="hint" id="hb">👆 ещё раз — перевод</div></div>
   </div>
   <div class="row" id="rate-row"><button class="b again" id="r-again">↺ Ещё раз</button><button class="b gotit" id="r-know">✓ Помню</button></div>
   <div class="row" id="nav-row"><button class="b gh" id="prev">‹</button><span class="cnt" id="cnt"></span><button class="b gh" id="next">›</button></div>
  </div>
 
  <div class="screen" id="s-quiz"><button class="back-btn" data-back="s-home">‹ Назад</button><div id="q-body"></div></div>
+
+ <div class="screen" id="s-essay">
+  <button class="back-btn" data-back="s-home">‹ Назад</button>
+  <h2>📝 Проверка эссе</h2>
+  <div class="sub">Это <b>анализ словаря</b>, а не оценка балла. Настоящий балл зависит ещё от аргументации, структуры и грамматики — их так не проверить.</div>
+  <textarea id="es-in" placeholder="Вставь сюда своё эссе (Task 2) или любой письменный текст…"></textarea>
+  <div class="row" style="margin:8px 0 14px"><button class="b gh" id="es-clear" style="flex:1">Очистить</button><button class="b" id="es-go" style="flex:2;background:linear-gradient(135deg,var(--wr),#3D7BF0);color:#fff;border-color:transparent;box-shadow:0 4px 0 var(--wr-dk)">Проверить</button></div>
+  <div id="es-out"></div>
+ </div>
+
+ <div class="screen" id="s-stats">
+  <button class="back-btn" data-back="s-home">‹ Назад</button>
+  <h2>📈 Дашборд</h2><div class="sub" id="st-sub"></div>
+  <div class="kpis" id="st-kpis"></div>
+  <div class="panelbox"><div class="ph">Активность за 8 недель</div><div class="heat" id="st-heat"></div><div class="hleg"><span>меньше</span><i class="hc h0"></i><i class="hc h1"></i><i class="hc h2"></i><i class="hc h3"></i><i class="hc h4"></i><span>больше</span></div></div>
+  <div class="panelbox"><div class="ph">Слова по уровням памяти</div><div id="st-boxes"></div><div class="phint2">Уровень 0 — только начал. Уровень 5 — вернётся через 35 дней.</div></div>
+  <div class="panelbox"><div class="ph">Прогресс по темам</div><div id="st-topics"></div></div>
+ </div>
 
  <div class="screen" id="s-up">
   <button class="back-btn" data-back="s-home">‹ Назад</button>
@@ -197,15 +297,42 @@
 </div>
 
 <div class="panel" id="panel"><button class="x" id="p-x">×</button><div style="display:flex;align-items:center;gap:9px"><span class="pw" id="pw"></span><button class="sb" id="p-sb" style="width:36px;height:36px;font-size:15px">🔊</button></div><div class="pd" id="pd"></div><div class="pr" id="pr"></div></div>
-<div class="ov" id="ov-add"><div class="box"><h3>➕ Своё слово</h3><div class="sub">Оставь определение и перевод пустыми — попробуем найти сами.</div>
-<div class="search" style="margin-bottom:10px"><input id="aw-word" placeholder="слово или выражение" autocomplete="off" autocapitalize="off"></div>
-<div class="row" style="margin:0 0 10px;max-width:100%"><button class="b" id="aw-side-sp" style="flex:1">🗣️ Speaking</button><button class="b" id="aw-side-wr" style="flex:1">✍️ Writing</button></div>
-<div class="search" style="margin-bottom:10px"><input id="aw-def" placeholder="определение (можно пусто — найдём сами)" autocomplete="off"></div>
-<div class="search" style="margin-bottom:10px"><input id="aw-ex" placeholder="пример (необязательно)" autocomplete="off"></div>
-<div class="search" style="margin-bottom:10px"><input id="aw-ru" placeholder="перевод (можно пусто)" autocomplete="off"></div>
-<div class="row" style="margin:0"><button class="b gh" id="aw-cancel" style="flex:1">Отмена</button><button class="b" id="aw-save" style="flex:2;background:linear-gradient(135deg,var(--purple),#FF9EC4);color:#fff;border-color:transparent;box-shadow:0 4px 0 var(--purple-dk)">Сохранить</button></div>
+<div class="ov" id="ov-add"><div class="box">
+<h3>➕ Своё слово</h3>
+<div class="sub">Слово, фраза или фразовый глагол. Определение и перевод подтянутся сами — всё можно поправить.</div>
+
+<div class="search" style="margin-bottom:8px"><input id="aw-word" placeholder="resilient · put up with · a piece of cake" autocomplete="off" autocapitalize="off" autocorrect="off"><button id="aw-find">🔍</button></div>
+<div class="awstat" id="aw-status">Введи слово и нажми 🔍 или Enter</div>
+
+<div class="row" style="margin:0 0 12px;max-width:100%"><button class="b" id="aw-side-sp" style="flex:1">🗣️ Speaking</button><button class="b" id="aw-side-wr" style="flex:1">✍️ Writing</button></div>
+
+<div class="prev" id="aw-prev">
+ <div class="prev-w" id="pv-word">—</div>
+ <div class="prev-d" id="pv-def">определение появится здесь</div>
+ <div class="prev-r" id="pv-ru"></div>
+</div>
+
+<button class="editlink" id="aw-edit-toggle">✏️ Поправить вручную</button>
+<div id="aw-fields" style="display:none">
+ <div class="flab">Определение <span class="fsrc" id="lab-def"></span></div>
+ <textarea id="aw-def" placeholder="что это значит (по-английски или по-русски)"></textarea>
+ <div class="flab">Перевод <span class="fsrc" id="lab-ru"></span></div>
+ <input id="aw-ru" placeholder="перевод" autocomplete="off">
+ <div class="flab">Пример</div>
+ <input id="aw-ex" placeholder="предложение с этим выражением" autocomplete="off">
+</div>
+
+<div class="row" style="margin:6px 0 0"><button class="b gh" id="aw-cancel" style="flex:1">Отмена</button><button class="b" id="aw-save" style="flex:2;background:linear-gradient(135deg,var(--purple),#FF9EC4);color:#fff;border-color:transparent;box-shadow:0 4px 0 var(--purple-dk)">Сохранить</button></div>
+
+<button class="editlink" id="aw-batch-toggle" style="margin-top:14px">📋 Добавить сразу списком</button>
+<div id="aw-batch" style="display:none">
+ <div class="sub" style="margin:8px 0">По одному выражению в строке. Можно так: <b>слово | определение | перевод</b> — тогда искать не будем.</div>
+ <textarea id="aw-batch-in" placeholder="put up with&#10;a piece of cake | something very easy | проще простого&#10;resilient" style="min-height:110px"></textarea>
+ <div class="row" style="margin:6px 0 0"><button class="b" id="aw-batch-go" style="flex:1">Обработать список</button></div>
+ <div id="aw-batch-out"></div>
+</div>
 </div></div>
-<div class="ov" id="ov-stat"><div class="box"><h3>📈 Прогресс</h3><div id="stat-body"></div><div class="row" style="margin:14px 0 0"><button class="b gh" id="stat-close" style="flex:1">Закрыть</button></div></div></div>
+<div class="ov" id="ov-skin"><div class="box"><h3>🎨 Оформление</h3><div class="sub" id="sk-sub"></div><div class="xpb"><i id="xp-fill"></i></div><div class="sub" id="sk-next" style="margin-bottom:14px"></div><div class="skgrid" id="sk-grid"></div><div class="row" style="margin:14px 0 0"><button class="b gh" id="sk-close" style="flex:1">Закрыть</button></div></div></div>
 <div class="toast" id="toast"></div>
 <script>
 /* ================= КОЛОДЫ ================= */
@@ -630,6 +757,10 @@ const DAILY_GOAL=15;
 const INTERVALS=[0,1,3,7,16,35];   /* дни до следующего показа по коробкам 0..5 */
 try{if(window.Telegram&&window.Telegram.WebApp){var TG=window.Telegram.WebApp;TG.ready();TG.expand();}}catch(e){}
 const $=id=>document.getElementById(id);
+/* Безопасная отправка события: если Umami не загрузился — просто ничего не делаем.
+   Отправляем ТОЛЬКО название события и обезличенные числа. Никаких слов пользователя. */
+function track(event,data){try{if(window.umami&&typeof window.umami.track==='function'){data?window.umami.track(event,data):window.umami.track(event);}}catch(e){}}
+function bucket(n){return n<10?'0-9':n<25?'10-24':n<50?'25-49':n<100?'50-99':'100+';}
 const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
 const today=()=>new Date().toISOString().slice(0,10);
 const dayNum=()=>Math.floor(Date.now()/864e5);
@@ -638,6 +769,10 @@ let srs=store.get('v3.srs',{});          /* key -> {b:box, d:dueDay} */
 let daily=store.get('v3.daily',{date:today(),n:0});
 let streak=store.get('v3.streak',{date:today(),count:1});
 let goalHit=store.get('v3.goalHit','')===today();
+let hist=store.get('v3.hist',{});
+let xp=store.get('v3.xp',0);
+let skinId=store.get('v3.skin','aurora');
+let prefs=store.get('v3.prefs',{ctx:false,audio:false,listen:false});
 let startToast='';
 (function(){const t=today();if(daily.date!==t){const y=new Date(Date.now()-864e5).toISOString().slice(0,10);streak.count=(streak.date===y)?streak.count+1:1;streak.date=t;store.set('v3.streak',streak);daily={date:t,n:0};store.set('v3.daily',daily);goalHit=false;startToast='🔥 Серия '+streak.count+' дн. Продолжай!';}})();
 
@@ -668,7 +803,7 @@ let side='speaking',topic=null,deck=[],pos=0,stage=0,mode='topic',backTo='s-topi
 function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));$(id).classList.add('on');window.scrollTo(0,0);}
 document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>{if(b.dataset.back==='s-home')renderHome();show(b.dataset.back);});
 $('deck-back').onclick=()=>{if(backTo==='s-home')renderHome();else renderTopics();show(backTo);};
-document.querySelectorAll('.big').forEach(b=>b.onclick=()=>{side=b.dataset.side;document.body.dataset.side=side;renderTopics();show('s-topics');});
+document.querySelectorAll('.big').forEach(b=>b.onclick=()=>{side=b.dataset.side;document.body.dataset.side=side;track('section',{name:side});renderTopics();show('s-topics');});
 
 function renderHome(){
  const sp=ALLTOPICS.filter(t=>t.side==='speaking'&&t.id!=='custom-speaking'),wr=ALLTOPICS.filter(t=>t.side==='writing'&&t.id!=='custom-writing');
@@ -686,7 +821,8 @@ function renderHome(){
  if(d.length){b.className='due';b.innerHTML='<div class="t">▶ Учить сейчас · '+d.length+'</div><div class="d">Новые слова и те, что пора повторить</div>';}
  else{b.className='due zero';b.innerHTML='<div class="t">✅ На сегодня всё</div><div class="d">Повторения закончились. Можно листать темы вручную.</div>';}
  renderWod();}
-$('due-btn').onclick=()=>{const d=dueList();if(!d.length){toast('Сегодня повторять нечего 👌');return;}
+$('due-btn').onclick=()=>{const d=dueList();if(!d.length){toast('Сегодня повторять нечего 👌');track('study-empty');return;}
+ track('study-start',{due:bucket(d.length)});
  deck=shuffle(d);mode='srs';topic=null;pos=0;backTo='s-home';document.body.dataset.side=deck[0].t.side;render();show('s-deck');};
 
 function shuffle(a){const c=a.slice();for(let i=c.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=c[i];c[i]=c[j];c[j]=t;}return c;}
@@ -715,11 +851,11 @@ function render(){
  stage=0;face('front');
  const x=cur(),c=x.c,isSp=x.t.side==='speaking';
  document.body.dataset.side=x.t.side;
- $('term').textContent=c[0];
+ renderFront(x,c);
  const sideCls=x.t.side==='speaking'?'sp':x.t.side==='writing'?'wr':'t1';const sideLbl=x.t.side==='speaking'?'🗣️ Speaking':x.t.side==='writing'?'✍️ Writing':'📊 Task 1';const p=$('p-front');p.className='pill '+sideCls;p.textContent=sideLbl+' · '+x.t.title;
  $('cnt').textContent=(pos+1)+'/'+deck.length;
  const d=$('def');d.innerHTML='';c[1].split(/(\s+)/).forEach(tok=>{if(/^\s+$/.test(tok)){d.appendChild(document.createTextNode(tok));return;}const s=document.createElement('span');s.className='w';s.textContent=tok;s.onclick=e=>{e.stopPropagation();lookup(tok,s);};d.appendChild(s);});
- $('ex').textContent=c[2]?'"'+c[2]+'"':'';
+ $('ex').textContent=c[2]?'"'+c[2]+'"':'';$('sb-ex').style.display=c[2]?'block':'none';
  const n=$('nt');n.className='note '+(x.t.side==='speaking'?'sp':'wr');n.innerHTML='<b>Как применять:</b> '+c[4];
  const isCustom=x.t.id&&x.t.id.startsWith('custom-');
  let delBtn=document.getElementById('del-custom');if(delBtn)delBtn.remove();
@@ -730,9 +866,72 @@ function render(){
  $('boxinfo').textContent=isNew(x.k)?'🆕 новое слово':'📦 уровень '+s.b+' из 5 · следующий повтор через '+INTERVALS[Math.min(s.b,5)]+' дн.';
  $('rate-row').style.display='none';$('nav-row').style.display=mode==='topic'?'flex':'none';
  renderGoal();}
+function renderFront(x,c){
+ const term=$('term'),ctxEl=document.getElementById('ctx-q'),playEl=document.getElementById('big-play');
+ if(ctxEl)ctxEl.remove();if(playEl)playEl.remove();
+ const wrow=term.parentNode;
+ wrow.style.display='flex';
+ const hasEx=!!c[2];
+ if(prefs.listen){
+  wrow.style.display='none';
+  const b=document.createElement('button');b.id='big-play';b.className='bigplay';b.textContent='🔊';
+  b.onclick=e=>{e.stopPropagation();speak(c[0]);};
+  wrow.parentNode.insertBefore(b,wrow);
+  setTimeout(()=>speak(c[0]),350);
+  return;}
+ if(prefs.ctx&&hasEx){
+  const gapped=gapSentence(c[2],c[0]);
+  if(gapped){wrow.style.display='none';
+   const d=document.createElement('div');d.id='ctx-q';
+   d.innerHTML='<div class="ctxlab">Вставь пропущенное</div><div class="ctxq"></div>';
+   d.querySelector('.ctxq').innerHTML=gapped;
+   wrow.parentNode.insertBefore(d,wrow);
+   if(prefs.audio)setTimeout(()=>speak(c[2].replace(new RegExp(escRe(c[0]),'i'),'blank')),350);
+   return;}}
+ term.textContent=c[0];
+ if(prefs.audio)setTimeout(()=>speak(c[0]),350);}
+
+function escRe(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+const IRREG={get:['got','gotten'],run:['ran'],find:['found'],make:['made'],take:['took','taken'],
+ come:['came'],go:['went','gone'],give:['gave','given'],break:['broke','broken'],keep:['kept'],
+ bring:['brought'],hold:['held'],lose:['lost'],feel:['felt'],think:['thought'],tell:['told'],
+ catch:['caught'],pay:['paid'],meet:['met'],draw:['drew'],fall:['fell','fallen'],stand:['stood'],
+ burn:['burnt','burned'],speak:['spoke'],hit:['hit'],cut:['cut'],put:['put'],set:['set'],let:['let']};
+function formsOf(w){const base=w.toLowerCase();
+ const f=[base,base+'s',base+'ing',base+'ed'];
+ if(base.endsWith('e'))f.push(base.slice(0,-1)+'ing',base+'d');
+ if(IRREG[base])IRREG[base].forEach(x=>f.push(x));
+ return [...new Set(f)];}
+function gapSentence(sentence,term){
+ const t=term.replace(/[…\u2026]/g,'').replace(/\(.*?\)/g,'').trim();
+ if(!t)return null;
+ const re=new RegExp(escRe(t),'i');
+ if(re.test(sentence))return sentence.replace(re,'<span class="gap"></span>');
+ const parts=t.split(/\s+/).filter(Boolean);
+ if(!parts.length)return null;
+ const head=parts[0];
+ const tail=parts.slice(1).filter(w=>w.length>1);
+ const headRe='(?:'+formsOf(head).map(escRe).join('|')+')';
+ if(tail.length){
+  const full=new RegExp('\\b'+headRe+'\\b(?:\\s+\\w+){0,2}?\\s+'+escRe(tail[tail.length-1])+'\\b','i');
+  if(full.test(sentence))return sentence.replace(full,'<span class="gap"></span>');}
+ const only=new RegExp('\\b'+headRe+'\\b','i');
+ if(head.length>2&&only.test(sentence))return sentence.replace(only,'<span class="gap"></span>');
+ return null;}
+
+function setTog(id,on){const b=$(id);if(b)b.classList.toggle('on',on);}
+function applyPrefs(){setTog('tg-ctx',prefs.ctx);setTog('tg-audio',prefs.audio);setTog('tg-listen',prefs.listen);}
+function togglePref(k){prefs[k]=!prefs[k];track('mode-toggle',{mode:k,on:prefs[k]?'on':'off'});
+ if(k==='listen'&&prefs.listen)prefs.ctx=false;
+ if(k==='ctx'&&prefs.ctx)prefs.listen=false;
+ store.set('v3.prefs',prefs);applyPrefs();
+ if($('s-deck').classList.contains('on'))render();}
+
 function renderGoal(){$('gf').style.width=Math.min(100,daily.n/DAILY_GOAL*100)+'%';$('gf').classList.toggle('done',daily.n>=DAILY_GOAL);$('gl').textContent=daily.n+'/'+DAILY_GOAL+' сегодня';$('streak').textContent='🔥 '+streak.count;}
-function countOne(){daily.n++;store.set('v3.daily',daily);renderGoal();
- if(daily.n>=DAILY_GOAL&&!goalHit){goalHit=true;store.set('v3.goalHit',today());toast('🔥 Цель дня выполнена — '+DAILY_GOAL+' карточек!');}}
+function countOne(){daily.n++;store.set('v3.daily',daily);
+ const t=today();hist[t]=(hist[t]||0)+1;store.set('v3.hist',hist);
+ addXp(1);renderGoal();
+ if(daily.n>=DAILY_GOAL&&!goalHit){goalHit=true;store.set('v3.goalHit',today());track('goal-hit',{streak:bucket(streak.count)});toast('🔥 Цель дня выполнена — '+DAILY_GOAL+' карточек!');}}
 $('card').onclick=()=>{
  if(stage===0){stage=1;face('back');}
  else if(stage===1){stage=2;$('tr').classList.add('show');$('hb').textContent='Оцени себя внизу ↓';$('rate-row').style.display='flex';$('nav-row').style.display='none';}};
@@ -801,7 +1000,7 @@ function renderQ(){const b=$('q-body');
    $('fb').innerHTML='<div class="expl"><b>'+(ok?'✅ Верно.':'❌ Правильно: '+q.ans)+'</b><br>'+q.ex+'</div><div class="row" style="margin-top:12px"><button class="b" id="qn" style="flex:1">Дальше ›</button></div>';
    $('qn').onclick=()=>{qi++;renderQ();};};
   o.appendChild(btn);});}
-function finishQuiz(){const p=Math.round(qright/qs.length*100);
+function finishQuiz(){const p=Math.round(qright/qs.length*100);track('quiz-done',{score:p>=80?'80-100':p>=50?'50-79':'0-49'});
  $('q-body').innerHTML='<div class="qbox"><div class="score"><div class="num">'+qright+'/'+qs.length+'</div></div><div class="expl" style="margin-top:12px">'+p+'% верно.'+(p>=80?' Материал держится хорошо.':p>=50?' Половина ещё не осела — прогони повторения.':' Слишком рано для теста, сначала пройди карточки.')+'</div><div class="row" style="margin-top:14px"><button class="b gh" id="q-home" style="flex:1">На главную</button><button class="b" id="q-again" style="flex:1">Ещё раз</button></div></div>';
  $('q-again').onclick=buildQuiz;$('q-home').onclick=()=>{renderHome();show('s-home');};}
 $('go-quiz').onclick=()=>{buildQuiz();show('s-quiz');};
@@ -819,49 +1018,302 @@ function upgrade(){const w=$('up-in').value.trim().toLowerCase();const out=$('up
   d.querySelector('.sbtn').onclick=()=>speak(word);out.appendChild(d);});}
 $('up-go').onclick=upgrade;
 $('up-in').addEventListener('keydown',e=>{if(e.key==='Enter')upgrade();});
-$('go-up').onclick=()=>{show('s-up');setTimeout(()=>$('up-in').focus(),200);};
+$('go-up').onclick=()=>{track('upgrade-open');show('s-up');setTimeout(()=>$('up-in').focus(),200);};
 
-/* ---- статистика ---- */
-$('stat-open').onclick=()=>{
+/* ---- переключатели режимов ---- */
+$('tg-ctx').onclick=()=>togglePref('ctx');
+$('tg-audio').onclick=()=>togglePref('audio');
+$('tg-listen').onclick=()=>togglePref('listen');
+$('sb-ex').onclick=e=>{e.stopPropagation();const c=cur();if(c&&c.c[2])speak(c.c[2]);};
+applyPrefs();
+
+/* ---- скины ---- */
+const SKINS=[{id:"aurora",n:"Aurora",e:"🌌",c:0,bg:"linear-gradient(160deg,#EDE9FF,#E7F1FF)"},
+{id:"mint",n:"Mint",e:"🌿",c:20,bg:"linear-gradient(160deg,#DBF6EA,#E9FBF2)"},
+{id:"sunset",n:"Sunset",e:"🌅",c:60,bg:"linear-gradient(160deg,#FFE7D6,#FFE1EC)"},
+{id:"ocean",n:"Ocean",e:"🌊",c:120,bg:"linear-gradient(160deg,#D3EBFF,#DCF3FF)"},
+{id:"forest",n:"Forest",e:"🌲",c:220,bg:"linear-gradient(160deg,#DEEFDC,#E9F5E3)"},
+{id:"gold",n:"Gold",e:"👑",c:400,bg:"linear-gradient(160deg,#FFF3D6,#FFE9C7)"}];
+function applySkin(id){const s=SKINS.find(x=>x.id===id)||SKINS[0];document.body.style.background=s.bg;skinId=s.id;store.set('v3.skin',s.id);}
+applySkin(skinId);
+function addXp(n){const b=xp;xp+=n;store.set('v3.xp',xp);
+ const nw=SKINS.filter(s=>s.c>b&&s.c<=xp);
+ if(nw.length)setTimeout(()=>toast('🎨 Открыто оформление: '+nw[nw.length-1].e+' '+nw[nw.length-1].n),500);}
+function openSkins(){const g=$('sk-grid');g.innerHTML='';
+ $('sk-sub').textContent='✨ '+xp+' XP · открыто '+SKINS.filter(s=>xp>=s.c).length+' из '+SKINS.length;
+ const nx=SKINS.find(s=>s.c>xp);
+ if(nx){const pv=[...SKINS].reverse().find(s=>s.c<=xp);const base=pv?pv.c:0;
+  $('xp-fill').style.width=Math.max(0,Math.min(100,(xp-base)/(nx.c-base)*100))+'%';
+  $('sk-next').textContent='До «'+nx.n+'» '+nx.e+' — ещё '+(nx.c-xp)+' XP. Одна карточка = 1 XP.';}
+ else{$('xp-fill').style.width='100%';$('sk-next').textContent='🎉 Всё открыто';}
+ SKINS.forEach(s=>{const ok=xp>=s.c;const d=document.createElement('div');
+  d.className='sk'+(ok?'':' lk')+(s.id===skinId?' act':'');d.style.background=s.bg;
+  d.innerHTML='<div class="e">'+s.e+'</div><div class="n">'+s.n+'</div><div class="c">'+(ok?(s.c===0?'старт':'открыт'):s.c+' XP')+'</div>';
+  d.onclick=()=>{if(!ok){toast('🔒 Ещё '+(s.c-xp)+' XP');return;}applySkin(s.id);openSkins();};g.appendChild(d);});
+ $('ov-skin').classList.add('on');}
+$('skin-open').onclick=openSkins;
+$('sk-close').onclick=()=>$('ov-skin').classList.remove('on');
+
+/* ---- дашборд ---- */
+function dstr(d){return d.toISOString().slice(0,10);}
+function renderStats(){
+ const total=ALL.length,newN=ALL.filter(x=>isNew(x.k)).length;
+ const solid=ALL.filter(x=>st(x.k).b>=3).length,mastered=ALL.filter(x=>st(x.k).b===5).length;
+ const days=Object.keys(hist).length;
+ const totalReviews=Object.values(hist).reduce((a,b)=>a+b,0);
+ $('st-sub').innerHTML='Прогресс, слова и статистика на этом экране хранятся только на твоём устройстве. Отдельно собирается обезличенная статистика посещений — без cookies, без текстов и без слов.';
+ $('st-kpis').innerHTML=
+  '<div class="kpi"><div class="n">'+solid+'</div><div class="l">усвоено из '+total+'</div></div>'+
+  '<div class="kpi"><div class="n">'+dueList().length+'</div><div class="l">к повторению сегодня</div></div>'+
+  '<div class="kpi"><div class="n">🔥 '+streak.count+'</div><div class="l">дней подряд</div></div>'+
+  '<div class="kpi"><div class="n">'+totalReviews+'</div><div class="l">карточек за '+days+' дн.</div></div>';
+ /* heatmap: 8 недель по 7 дней */
+ const heat=$('st-heat');heat.innerHTML='';
+ const cols=[];const now=new Date();
+ for(let w=7;w>=0;w--){const col=[];
+  for(let d=6;d>=0;d--){const dt=new Date(now.getTime()-((w*7+d)*864e5));col.push(dstr(dt));}
+  cols.push(col);}
+ const max=Math.max(1,...Object.values(hist));
+ cols.forEach(col=>{const c=document.createElement('div');
+  col.forEach(day=>{const v=hist[day]||0;
+   const lvl=v===0?0:v<=max*0.25?1:v<=max*0.5?2:v<=max*0.75?3:4;
+   const i=document.createElement('i');i.className='hc h'+lvl;i.title=day+': '+v;
+   i.style.marginBottom='4px';c.appendChild(i);});
+  heat.appendChild(c);});
+ /* boxes */
  const boxes=[0,0,0,0,0,0];ALL.forEach(x=>{if(srs[x.k])boxes[st(x.k).b]++;});
- const newN=ALL.filter(x=>isNew(x.k)).length;
- const solid=ALL.filter(x=>st(x.k).b>=3).length;
- let h='<div class="stat"><span>Всего выражений</span><b>'+ALL.length+'</b></div>';
- h+='<div class="stat"><span>Ещё не открывал</span><b>'+newN+'</b></div>';
- h+='<div class="stat"><span>Усвоено (уровень 3+)</span><b>'+solid+'</b></div>';
- h+='<div class="stat"><span>К повторению сегодня</span><b>'+dueList().length+'</b></div>';
- h+='<div class="stat"><span>Серия дней</span><b>🔥 '+streak.count+'</b></div>';
- h+='<div style="margin-top:14px;font-size:12.5px;color:var(--muted);line-height:1.5">Каждое «✓ Помню» поднимает слово на уровень выше, и оно возвращается позже: через 1, 3, 7, 16, затем 35 дней. «↺ Ещё раз» сбрасывает на начало. Так забытое всплывает чаще, а выученное не мозолит глаза.</div>';
- $('stat-body').innerHTML=h;$('ov-stat').classList.add('on');};
-$('stat-close').onclick=()=>$('ov-stat').classList.remove('on');
+ const bmax=Math.max(1,...boxes,newN);
+ let bh='<div class="brow2"><span class="bl">не начат</span><div class="bt"><i style="width:'+(newN/bmax*100)+'%;background:#D8D8E4"></i></div><span class="bn">'+newN+'</span></div>';
+ boxes.forEach((n,i)=>{bh+='<div class="brow2"><span class="bl">ур. '+i+'</span><div class="bt"><i style="width:'+(n/bmax*100)+'%"></i></div><span class="bn">'+n+'</span></div>';});
+ $('st-boxes').innerHTML=bh;
+ /* topics */
+ let th='';
+ ALLTOPICS.forEach(t=>{const l=t.cards.filter(c=>st(t.id+'::'+c[0]).b>=3).length;
+  const pct=Math.round(l/t.cards.length*100);
+  th+='<div class="trow"><div class="tl"><span>'+t.emoji+' '+t.title+'</span><span>'+l+'/'+t.cards.length+'</span></div><div class="bar"><i style="width:'+pct+'%"></i></div></div>';});
+ $('st-topics').innerHTML=th;}
+$('stat-open').onclick=()=>{track('dashboard');renderStats();show('s-stats');};
+
+/* ---- проверка эссе ---- */
+function termList(filter){const out=[];TOPICS.forEach(t=>{if(filter(t))t.cards.forEach(c=>out.push(c[0]));});return out;}
+function cleanTerm(t){return t.replace(/[…\u2026]/g,'').replace(/\(.*?\)/g,'').replace(/[^a-zA-Z' -]/g,'').trim().toLowerCase();}
+function findIn(text,terms){const hits=[];terms.forEach(raw=>{const t=cleanTerm(raw);
+ if(t.length<3)return;
+ const re=new RegExp('(^|[^a-z])'+escRe(t)+'([^a-z]|$)','i');
+ if(re.test(text))hits.push(raw);});return [...new Set(hits)];}
+function addFind(out,cls,title,detail){const d=document.createElement('div');d.className='find '+cls;
+ d.innerHTML='<div class="ft"></div><div class="fd"></div>';
+ d.querySelector('.ft').textContent=title;d.querySelector('.fd').innerHTML=detail;out.appendChild(d);}
+function checkEssay(){
+ const raw=$('es-in').value.trim();const out=$('es-out');out.innerHTML='';
+ if(!raw){addFind(out,'warn','Пусто','Вставь текст эссе в поле выше.');return;}
+ const text=' '+raw.toLowerCase().replace(/\s+/g,' ')+' ';
+ const words=raw.toLowerCase().match(/[a-z']+/g)||[];
+ const wc=words.length;
+ const sentences=raw.split(/[.!?]+/).map(s=>s.trim()).filter(s=>s.length>1);
+ const avgLen=sentences.length?Math.round(wc/sentences.length):0;
+ const uniq=new Set(words).size;
+ const ttr=wc?Math.round(uniq/wc*100):0;
+
+ /* 1. объём */
+ if(wc<250)addFind(out,'bad','Объём: '+wc+' слов','Для Task 2 нужно минимум <b>250 слов</b>. За недобор снимают балл автоматически, каким бы хорошим ни был текст.');
+ else if(wc>340)addFind(out,'warn','Объём: '+wc+' слов','Больше 340 слов — риск потерять время и наделать ошибок. Оптимально 260–300.');
+ else addFind(out,'ok','Объём: '+wc+' слов','В целевом диапазоне.');
+
+ /* 2. разговорные выражения в письменном тексте */
+ const spk=findIn(text,termList(t=>t.side==='speaking'));
+ if(spk.length)addFind(out,'bad','Разговорные выражения в эссе ('+spk.length+')',
+  'Эти выражения из устного регистра. В Task 2 они снижают балл за Lexical Resource:<br>'+spk.map(w=>'<span class="chipx">'+w+'</span>').join(''));
+ else addFind(out,'ok','Регистр чистый','Разговорных выражений из базы не нашёл.');
+
+ /* 3. простые слова, которые надо апгрейдить */
+ const basic=findIn(text,Object.keys(UPGRADE));
+ if(basic.length){
+  const sugg=basic.slice(0,8).map(b=>{const alt=(UPGRADE[b]||[]).filter(a=>a[1]!=='S')[0];
+   return '<span class="chipy">'+b+(alt?' → '+alt[0]:'')+'</span>';}).join('');
+  addFind(out,'warn','Простые слова ('+basic.length+')','Их стоит заменить на лексику C1. Раздел «Апгрейд слова» даст больше вариантов:<br>'+sugg);}
+ else addFind(out,'ok','Простой лексики не нашёл','Хорошо.');
+
+ /* 4. вводные конструкции */
+ const linkers=findIn(text,termList(t=>t.id==='wr-linking'||t.id==='col-link'));
+ if(linkers.length>=3)addFind(out,'ok','Вводные конструкции ('+linkers.length+')',linkers.map(w=>'<span class="chipg">'+w+'</span>').join(''));
+ else addFind(out,'warn','Мало вводных конструкций ('+linkers.length+')',
+  'В эссе на 4 абзаца их обычно нужно 4–6. Возьми из темы «Вводные конструкции»: <b>It could be argued that, Conversely, On balance, A further consideration is</b>.'+(linkers.length?'<br>Сейчас есть: '+linkers.map(w=>'<span class="chipg">'+w+'</span>').join(''):''));
+
+ /* 5. академические слова, которые ты уже учил */
+ const acad=findIn(text,termList(t=>t.side==='writing'&&t.id!=='wr-linking'));
+ if(acad.length)addFind(out,'ok','Академическая лексика из твоей базы ('+acad.length+')',acad.map(w=>'<span class="chipg">'+w+'</span>').join(''));
+ else addFind(out,'warn','Не вижу слов из раздела Writing','Ты учишь C1-лексику, но в этом тексте её нет. Попробуй сознательно вставить 3–4 выражения из своих карточек.');
+
+ /* 6. повторы */
+ const stop=new Set(['the','a','an','and','or','but','of','to','in','is','are','was','were','it','that','this','for','on','with','as','be','by','not','have','has','they','their','which','from','can','also','more','than']);
+ const freq={};words.forEach(w=>{if(w.length>3&&!stop.has(w))freq[w]=(freq[w]||0)+1;});
+ const rep=Object.entries(freq).filter(([w,n])=>n>=4).sort((a,b)=>b[1]-a[1]).slice(0,6);
+ if(rep.length)addFind(out,'warn','Повторы','Эти слова встречаются часто — поищи синонимы:<br>'+rep.map(([w,n])=>'<span class="chipy">'+w+' ×'+n+'</span>').join(''));
+
+ /* 7. сокращения */
+ const contr=raw.match(/\b\w+['\u2019](t|s|re|ve|ll|d|m)\b/gi);
+ if(contr&&contr.length)addFind(out,'bad','Сокращения ('+contr.length+')','В академическом письме пишут полностью: <b>don\'t → do not</b>, <b>it\'s → it is</b>.<br>'+[...new Set(contr)].slice(0,8).map(w=>'<span class="chipx">'+w+'</span>').join(''));
+
+ /* 8. структура предложений */
+ if(avgLen&&avgLen<11)addFind(out,'warn','Короткие предложения (в среднем '+avgLen+' слов)','Для C1 нужны сложные конструкции. Соединяй мысли через <b>which, whereas, although, given that</b>.');
+ else if(avgLen>28)addFind(out,'warn','Длинные предложения (в среднем '+avgLen+' слов)','Риск потерять грамматику. Чередуй длинные и короткие.');
+ else if(avgLen)addFind(out,'ok','Длина предложений в норме','В среднем '+avgLen+' слов, абзацев: '+sentences.length+'.');
+
+ /* 9. разнообразие */
+ addFind(out,ttr>=45?'ok':'warn','Разнообразие лексики: '+ttr+'%',
+  'Доля уникальных слов от общего числа. Ниже 40% обычно означает повторы, выше 50% — богатый словарь. Это грубый ориентир, а не показатель экзамена.');
+
+ track('essay-check',{words:bucket(wc),speaking_errors:bucket(spk.length)});
+ addFind(out,'warn','Что здесь НЕ проверено',
+  'Аргументация, ответ на вопрос задания, связность абзацев, грамматика и артикли. Это половина оценки, и её может проверить только человек или полноценная языковая модель. Не считай этот отчёт баллом.');
+ window.scrollTo(0,0);}
+$('es-go').onclick=checkEssay;
+$('es-clear').onclick=()=>{$('es-in').value='';$('es-out').innerHTML='';};
+$('go-essay').onclick=()=>show('s-essay');
 
 function deleteCustom(x){const side=x.t.side;const arr=custom[side];const idx=arr.findIndex(c=>c[0]===x.c[0]);if(idx>-1){arr.splice(idx,1);store.set('v3.custom',custom);delete srs[x.k];store.set('v3.srs',srs);buildAll();toast('Удалено: '+x.c[0]);renderHome();show('s-home');}}
 
 /* ---- добавление своего слова ---- */
-let awSide='speaking';
+let awSide='speaking', awFound={def:null,ru:null}, awBusy=false, awBatch=[];
 function setAwSide(s){awSide=s;$('aw-side-sp').classList.toggle('selside',s==='speaking');$('aw-side-wr').classList.toggle('selside',s==='writing');}
-$('go-add').onclick=()=>{$('aw-word').value='';$('aw-def').value='';$('aw-ex').value='';$('aw-ru').value='';setAwSide('speaking');$('ov-add').classList.add('on');setTimeout(()=>$('aw-word').focus(),150);};
+function awStatus(msg,cls){const e=$('aw-status');e.textContent=msg;e.className='awstat'+(cls?' '+cls:'');}
+
+/* запрос с ограничением по времени — чтобы ничего не висело вечно */
+function timedFetch(url,ms){
+ return new Promise((resolve,reject)=>{
+  let done=false;
+  const timer=setTimeout(()=>{if(!done){done=true;reject(new Error('timeout'));}},ms||7000);
+  fetch(url).then(r=>{if(done)return;done=true;clearTimeout(timer);resolve(r);})
+            .catch(e=>{if(done)return;done=true;clearTimeout(timer);reject(e);});
+ });}
+
+/* словарь знает только отдельные слова — для фраз честно возвращаем null */
+async function dictLookup(term){
+ try{const r=await timedFetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(term),7000);
+  if(!r.ok)return null;const j=await r.json();
+  const d=j&&j[0]&&j[0].meanings&&j[0].meanings[0]&&j[0].meanings[0].definitions&&j[0].meanings[0].definitions[0];
+  return d&&d.definition?{def:d.definition,ex:d.example||''}:null;}
+ catch(e){return null;}}
+
+async function translateRu(term){
+ const l=localRu(term.toLowerCase());if(l)return l;
+ for(const extra of ['','&de=learner@example.com']){
+  try{const r=await timedFetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(term)+'&langpair=en|ru'+extra,7000);
+   const j=await r.json();
+   const t=j&&j.responseData&&j.responseData.translatedText;
+   if(t&&!/NO QUERY|INVALID|MYMEMORY WARNING|QUOTA/i.test(t)&&t.toLowerCase()!==term.toLowerCase())return t;}
+  catch(e){}}
+ return null;}
+
+function isPhrase(t){return t.trim().split(/\s+/).length>1;}
+
+function awPreview(){
+ const w=$('aw-word').value.trim();
+ $('pv-word').textContent=w||'—';
+ const def=$('aw-def').value.trim(), ru=$('aw-ru').value.trim();
+ $('pv-def').textContent=def||'определение появится здесь';
+ $('pv-def').style.color=def?'#5A5A70':'#B4B4C4';
+ $('pv-ru').textContent=ru?'🇷🇺 '+ru:'';}
+
+async function awFetch(){
+ const w=$('aw-word').value.trim();
+ if(!w){awStatus('Сначала введи слово или фразу','err');return;}
+ if(awBusy)return;
+ awBusy=true;$('aw-find').textContent='⏳';
+ awStatus('Ищу определение и перевод…');
+ const phrase=isPhrase(w);
+ const [d,ru]=await Promise.all([dictLookup(w),translateRu(w)]);
+ awBusy=false;$('aw-find').textContent='🔍';
+
+ if(d){$('aw-def').value=d.def;if(d.ex&&!$('aw-ex').value.trim())$('aw-ex').value=d.ex;
+  $('lab-def').textContent='· найдено';$('lab-def').className='fsrc ok';}
+ else{$('lab-def').textContent='· впиши сам';$('lab-def').className='fsrc no';}
+
+ if(ru){$('aw-ru').value=ru;$('lab-ru').textContent='· найдено';$('lab-ru').className='fsrc ok';}
+ else{$('lab-ru').textContent='· впиши сам';$('lab-ru').className='fsrc no';}
+
+ awPreview();
+
+ if(d&&ru)awStatus('✅ Нашлось и определение, и перевод','ok');
+ else if(!d&&ru&&phrase)awStatus('Перевод нашёлся. Определение для фраз словарь не знает — впиши своими словами (это даже полезнее для запоминания)','warn');
+ else if(!d&&ru)awStatus('Перевод нашёлся, определения нет — впиши своими словами','warn');
+ else if(d&&!ru)awStatus('Определение нашлось, перевода нет — впиши сам','warn');
+ else awStatus('Ничего не нашлось. Проверь написание или впиши всё вручную — слово всё равно сохранится','err');
+
+ if(!d||!ru)openFields();}
+
+function openFields(){$('aw-fields').style.display='block';$('aw-edit-toggle').textContent='🔽 Свернуть поля';}
+$('aw-edit-toggle').onclick=()=>{const f=$('aw-fields');const open=f.style.display!=='none';
+ f.style.display=open?'none':'block';$('aw-edit-toggle').textContent=open?'✏️ Поправить вручную':'🔽 Свернуть поля';};
+
+$('go-add').onclick=()=>{
+ ['aw-word','aw-def','aw-ex','aw-ru','aw-batch-in'].forEach(id=>{if($(id))$(id).value='';});
+ $('lab-def').textContent='';$('lab-ru').textContent='';
+ $('aw-fields').style.display='none';$('aw-edit-toggle').textContent='✏️ Поправить вручную';
+ $('aw-batch').style.display='none';$('aw-batch-out').innerHTML='';awBatch=[];
+ setAwSide('speaking');awStatus('Введи слово и нажми 🔍 или Enter');awPreview();
+ $('ov-add').classList.add('on');setTimeout(()=>$('aw-word').focus(),150);};
 $('aw-side-sp').onclick=()=>setAwSide('speaking');
 $('aw-side-wr').onclick=()=>setAwSide('writing');
 $('aw-cancel').onclick=()=>$('ov-add').classList.remove('on');
-async function fetchDefFor(word){try{const r=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(word));if(!r.ok)throw 0;const j=await r.json();return j[0].meanings[0].definitions[0].definition;}catch(e){return null;}}
-async function fetchRuFor(word){const l=localRu(word.toLowerCase());if(l)return l;
- try{const r=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(word)+'&langpair=en|ru');const j=await r.json();const t=j.responseData&&j.responseData.translatedText;if(!t||/NO QUERY|INVALID/i.test(t))throw 0;return t;}catch(e){return null;}}
-$('aw-save').onclick=async()=>{
- const word=$('aw-word').value.trim();if(!word){toast('Введи слово или выражение');return;}
- let def=$('aw-def').value.trim(),ex=$('aw-ex').value.trim(),ru=$('aw-ru').value.trim();
- $('aw-save').textContent='Ищу…';$('aw-save').disabled=true;
- if(!def){const f=await fetchDefFor(word);def=f||'(добавь определение самостоятельно)';}
- if(!ru){const f=await fetchRuFor(word);ru=f||'';}
- $('aw-save').textContent='Сохранить';$('aw-save').disabled=false;
- const note=awSide==='speaking'?'Добавлено тобой — используй в устной речи.':'Добавлено тобой — используй в письменной речи.';
- custom[awSide].push([word,def,ex,ru,note]);store.set('v3.custom',custom);
- buildAll();$('ov-add').classList.remove('on');toast('✅ Добавлено: '+word);renderHome();};
+$('aw-find').onclick=awFetch;
+$('aw-word').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();awFetch();}});
+['aw-def','aw-ru'].forEach(id=>$(id).addEventListener('input',awPreview));
+
+function saveCard(word,def,ex,ru,sideKey){
+ const note=sideKey==='speaking'?'Добавлено тобой — используй в устной речи.':'Добавлено тобой — используй в письменной речи.';
+ const exists=custom[sideKey].some(c=>c[0].toLowerCase()===word.toLowerCase());
+ if(exists)return false;
+ custom[sideKey].push([word,def||'(определение не задано)',ex||'',ru||'',note]);
+ return true;}
+
+$('aw-save').onclick=()=>{
+ const word=$('aw-word').value.trim();
+ if(!word){awStatus('Введи слово или фразу','err');return;}
+ const ok=saveCard(word,$('aw-def').value.trim(),$('aw-ex').value.trim(),$('aw-ru').value.trim(),awSide);
+ if(!ok){awStatus('Такое выражение уже есть в твоих словах','warn');return;}
+ store.set('v3.custom',custom);buildAll();track('word-added',{side:awSide,phrase:isPhrase(word)?'yes':'no'});
+ $('ov-add').classList.remove('on');toast('✅ Добавлено: '+word);renderHome();};
+
+/* ---- пакетное добавление ---- */
+$('aw-batch-toggle').onclick=()=>{const b=$('aw-batch');const open=b.style.display!=='none';
+ b.style.display=open?'none':'block';$('aw-batch-toggle').textContent=open?'📋 Добавить сразу списком':'🔽 Свернуть список';};
+function renderBatch(){const out=$('aw-batch-out');out.innerHTML='';
+ awBatch.forEach((it,i)=>{const d=document.createElement('div');d.className='brow';
+  d.innerHTML='<span class="bs"></span><span class="bw"></span><button class="bx">✕</button>';
+  d.querySelector('.bs').textContent=it.status;
+  d.querySelector('.bw').textContent=it.word+(it.ru?' — '+it.ru:'');
+  d.querySelector('.bx').onclick=()=>{awBatch.splice(i,1);renderBatch();};
+  out.appendChild(d);});
+ if(awBatch.length){const b=document.createElement('button');b.className='b';b.style.cssText='width:100%;margin-top:10px;background:var(--green);color:#fff;border-color:var(--green);box-shadow:0 4px 0 var(--green-dk)';
+  b.textContent='Сохранить все ('+awBatch.length+')';
+  b.onclick=()=>{let n=0;awBatch.forEach(it=>{if(saveCard(it.word,it.def,'',it.ru,awSide))n++;});
+   store.set('v3.custom',custom);buildAll();awBatch=[];
+   $('ov-add').classList.remove('on');toast('✅ Добавлено: '+n);renderHome();};
+  out.appendChild(b);}}
+$('aw-batch-go').onclick=async()=>{
+ const lines=$('aw-batch-in').value.split('\n').map(s=>s.trim()).filter(Boolean);
+ if(!lines.length){awStatus('Список пустой','err');return;}
+ if(lines.length>25){awStatus('За раз лучше не больше 25 строк','warn');return;}
+ awBatch=lines.map(l=>{const p=l.split('|').map(s=>s.trim());
+  return {word:p[0],def:p[1]||'',ru:p[2]||'',status:'⏳'};});
+ renderBatch();
+ for(const it of awBatch){
+  if(it.def&&it.ru){it.status='✍️';renderBatch();continue;}
+  const [d,ru]=await Promise.all([it.def?null:dictLookup(it.word),it.ru?null:translateRu(it.word)]);
+  if(d)it.def=d.def;
+  if(ru)it.ru=ru;
+  it.status=(it.def&&it.ru)?'✅':(it.def||it.ru)?'⚠️':'❌';
+  renderBatch();}
+ awStatus('Готово. ✅ нашлось всё · ⚠️ частично · ❌ ничего · ✍️ твоё','ok');};
+
 $('go-custom').onclick=()=>{const items=custom.speaking.concat(custom.writing);if(!items.length){toast('Пока нет своих слов — добавь первое');return;}
  const ct=customTopics();deck=[];ct.forEach(t=>t.cards.forEach(c=>deck.push({t:t,c:c,k:t.id+'::'+c[0]})));
  mode='topic';topic=null;pos=0;backTo='s-home';document.body.dataset.side=deck[0].t.side;render();show('s-deck');};
 
 let tt=null;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),3400);}
+track('app-open',{returning:Object.keys(srs).length?'yes':'no',streak:bucket(streak.count)});
 renderHome();
 if(startToast)setTimeout(()=>toast(startToast),700);
 </script>
